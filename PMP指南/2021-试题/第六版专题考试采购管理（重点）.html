@@ -1,0 +1,3335 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="google" content="notranslate" />
+    
+
+
+
+<script charset="UTF-8" src="https://s3.kaoshixing.com/static/plugins/sensorsdata.min.js?v=50f19a4b2f"></script>
+<script type="text/javascript" src="https://s2.kaoshixing.com/static/plugins/ksx_probe.js?v=de8a9c9d93"></script>
+<script type="text/javascript">
+    // 初始化
+    ksxProbe.sensorsInit({
+        clickmap: 'not_collect',
+        scroll_notice_map: 'not_collect'
+    });
+    // 注册全局属性
+    ksxProbe.sensorsRegisterPage({
+        platform: '会否培训平台',
+        system: '学员端',
+    });
+    // 用户属性
+    var sensorsSetProfile = {};
+
+    
+    ksxProbe.sensorsRegisterPage({
+        companyId: '698',
+        companyName: '慧翔天地'
+    });
+    sensorsSetProfile.companyId = '698';
+    sensorsSetProfile.companyName = '慧翔天地';
+    sensorsSetProfile.rightsGrade = '7';
+    
+    sensorsSetProfile.userId = '17845423';
+    sensorsSetProfile.surname = '李木根';
+    sensorsSetProfile.userName = 'ypdfgz165@hxpmp.cn';
+    sensorsSetProfile.createTime = '2021-09-27 15:18:28.0';
+    sensorsSetProfile.role = 'staff';
+    ksxProbe.sensorsSetProfile(sensorsSetProfile);
+    // 登录
+    ksxProbe.sensorsLogin(sensorsSetProfile.userId)
+    
+    ksxProbe.sensorsQuick('autoTrack');
+    //添加tingyun探针
+    ksxProbe.tingyun();
+</script>
+<title>第六版专题考试采购管理（重点）</title>
+    <meta http-equiv = "X-UA-Compatible" content = "IE=edge,chrome=1" />
+    
+                <link rel="shortcut icon" href="https://s0.kaoshixing.com/static/base/images/new_logo.ico" />
+            
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="renderer" content="webkit">
+    <meta name="referrer" content="no-referrer"/>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" type="text/css" href="https://s4.kaoshixing.com/static/plugins/bootstrap/css/bootstrap.min.css?v=9ed71d9523">
+    
+    <link rel="stylesheet" type="text/css" href="https://s4.kaoshixing.com/static/plugins/IconFont/css/styles.min.css?v=155b8a0f09">
+    <link rel="stylesheet" type="text/css" href="https://s3.kaoshixing.com/static/plugins/examFont/style.css?v=34b26f4011">
+    <link rel="stylesheet" type="text/css" href="https://s3.kaoshixing.com/static/base/css/base.css?v=dedbff3a82">
+    <link rel="stylesheet" type="text/css" href="https://s1.kaoshixing.com/static/plugins/H5-recorder/recorder.css?v=97ad96a4b3" />
+    <link rel="stylesheet" type="text/css" href="https://s4.kaoshixing.com/static/plugins/ksx-message/message.css?v=a77d9ed164">
+    
+    <link rel="stylesheet" type="text/css" href="https://s3.kaoshixing.com/static/exam/css/exam_style.css?v=68692cde35">
+    
+    <link rel="stylesheet" type="text/css" href="https://s2.kaoshixing.com/static/plugins/katex/katex.min.css?v=27f0bd8419" />
+    <link rel="stylesheet" href="https://s4.kaoshixing.com/static/plugins/honeySwitch/honeySwitch.css?v=ceb2d7216a">
+    <style>
+        .col-sm-3.control-label.letter-7{
+            width: 100%!important;
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif!important;
+            font-size: 14px!important;
+            font-weight: unset;
+        }
+        .switch_set_error.switch-off{
+            background: #DEDEDE!important;
+        }
+        .switch_set_error.switch-on{
+            background: #1A8CFE!important;
+        }
+        .switch_set_error{
+            width:46px;
+            height: 24px; /*22加上2个1px的border*/
+        }
+        .switch_set_error.switch-on .slider{
+            left: 24px; /*46-22*/
+            transition: background-color 0.4s, left 0.2s;
+        }
+        .slider{
+            width:22px;
+            height:22px;
+        }
+        .col-sm-9{
+            margin:auto;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom:0;
+        }
+        .menu-item.menu-item-exam.menu-item-status{
+            border-bottom: 1px solid #dedede;
+            margin-bottom:14px;
+        }
+        .filterOnly{
+            height: 54px;
+            position: relative;
+            margin-bottom: 12px;
+        }
+        .filterOnly .current_filter{
+            font-size: 14px;
+            color: #1A8CFE;
+            text-align: center;
+            width:unset;
+            margin: auto;
+            position: absolute;
+            left: 10px;
+            right: 0;
+            bottom: 0;
+            top: 25px;
+            cursor: pointer;
+        }
+        .filterOnly .icon-a_arrow_down{
+            display:inline;
+            transform: scale(0.5);
+            margin-left: 3px;
+            display: inline-block;
+            transform: scale(0.7);
+            vertical-align: middle;
+        }
+        .filterOnly .filter_opts{
+            position: absolute;
+            background: #fff;
+            border: 1px solid #E4E7ED;
+            box-shadow: 0 2px 12px 0 rgba(0,0,0,0.06);
+            border-radius: 4px;
+            height:122px;
+            width:120px;
+            padding:10px 0;
+            top: 60px;
+            border: 1px solid #ccc;
+            left: -10px;
+            display:none;
+        }
+        .filterOnly .filter_opt{
+            font-size: 14px;
+            color: #5A5E66;
+            padding:10px 20px;
+            text-align: left;
+            line-height: 14px;
+            cursor: pointer;
+        }
+        .filterOnly .filter_opt.active{
+            color: #1A8CFE;
+        }
+        .filterOnly .filter_opt:hover{
+            background: #F1F3F8;
+        }
+        .filterOnly .filter_opt .icon-a_check{
+            display: none;
+        }
+        .filterOnly .filter_opt.active .icon-a_check{
+            display: inline-block;
+            float: right;
+        }
+        .filterOnly .filter_opts:before {
+            position: absolute;
+            display: inline-block;
+            top: -5px;
+            left: 50px;
+            width: 0;
+            height: 0px;
+            content: '';
+            border-style: solid;
+            border-width: 8px;
+            border-color: #fff #fff transparent transparent;
+            transform: rotate(-45deg);
+            box-shadow: 2px -2px 2px #e2e2e2;
+        }
+
+        /*答题卡优化*/
+        #answercardFoldBtn{
+            display:none;
+        }
+        .numberCardModal{
+            left: 90px;
+        }
+        .nav-wrapper{
+            right: 90px;
+            bottom:20px;
+        }
+        .nav-wrapper .btn.btn-primary.btn-nav{
+            bottom: -10px;
+            position: absolute;
+        }
+        .main{
+            padding: 90px 230px 80px 350px;
+        }
+        .modal-number-card .modal-body .card-content .box-list .box.s1 .iconBox{
+            border: 1px solid #DCDFE6;
+            color:#DCDFE6;
+        }
+        .insert-box .iconBox{
+            font-size:1px;
+        }
+
+        .modal-number-card .modal-header {
+            padding: 10px;
+        }
+        .numberCardModal .modal-number-card .modal-content .title{
+            margin-bottom: 0;
+        }
+        .numberCardModal .modal-number-card .modal-content .title .title_content{
+            margin-left: 14px;
+            font-weight: 600;
+            color: #27274A;
+        }
+        .modal-number-card .modal-body .card-content .card-content-title {
+            font-size: 12px;
+            color: #27274A;
+            font-weight: 600;
+        }
+        .modal-number-card .modal-body .card-content .box-list {
+            padding-bottom: 0;
+        }
+        .modal-number-card .iconBox{
+            font-weight: 600;
+        }
+
+        .correctCommentBtn, .correctCommentBtn:hover{
+            position: absolute;
+            bottom: 45px;
+            text-align: center;
+            width: 100%;
+            color: #1A8CFE;
+            background: #FFFFFF;
+            box-shadow: 0 1px 4px 0 rgba(0,0,0,0.10);
+            border-radius: 4px;
+            font-size: 14px;
+            color: #27274A;
+        }
+        .correctComment{
+            background: #FFFFFF;
+            border: 1px solid #DCDFE6;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        .correctComment .content{
+            font-size: 14px;
+            color: #27274A;
+            border-radius: 4px;
+            padding: 20px 30px;
+            background: #FFFFFF;
+        }
+
+        .score-comments-box {
+            background: #FAFAFA;
+            border-radius: 4px;
+            margin-top: 20px;
+            padding: 15px 20px;
+            font-size: 14px;
+            color: #3A3E51;
+        }
+        .score-comments-box .comments-box-title {
+            color: #1DC88C;
+        }
+        .body.paper {
+            padding-bottom: 20px;
+        }
+    </style>
+
+
+
+<link rel="stylesheet" type="text/css" href="https://s2.kaoshixing.com/static/plugins/katex/katex.min.css?v=27f0bd8419" />
+<script type="text/javascript" src="https://s0.kaoshixing.com/static/plugins/katex/katex.min.js?v=c158c9e823"></script>
+<script type="text/javascript" src="https://s1.kaoshixing.com/static/plugins/katex/contrib/auto-render.min.js?v=28cd0b98cd"></script>
+<script type="text/javascript">
+    // 解析latex公式
+    function renderFormula(selector, flag){ //flag预留，以备用于区分不同处理
+        $(selector).each(function (index, element) {
+            if(!$(element).hasClass("rendered")){
+                var text = $(element).text();
+
+                katex.render(text, element, {
+                    throwOnError: false
+                });
+
+                $(element).addClass("rendered");
+            }
+        });
+    }
+</script>
+
+
+</head>
+<body>
+<!-- loading -->
+<div class="spinner-wrapper" id="spinnerLoading">
+    <div class="spinner">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+    </div>
+</div>
+
+<div class="main show-answers">
+        <div class="header-wrapper">
+                
+            <div class="logo-wrapper">
+                <a href="https://v.kaoshixing.com/exam/pc/home/#/" title="logo" id="companyLogo"></a>
+            </div>
+
+
+            <div class="exam-name ellipsis">第六版专题考试采购管理（重点）</div>
+            <div class="user ellipsis">
+                <i class="icon icon-a_nav_my"></i>
+                李木根
+            </div>
+
+            <a type="button" class="btn btn-default logout " id="logoutBtn">
+                <i class="icon icon-a_btn_sign_out btn-icon-left"></i>
+                退出
+            </a>
+
+        </div>
+
+        <div class="body-wrapper">
+            <div class="body paper">
+                
+
+
+        <div class="questions">
+            
+                <div class="questions-title" id="">单选题
+                    <div class="question-detail-info">
+                        共26题，大题得分：<span class="getScore">0.0</span>，大题满分：26.0
+                    </div>
+                    
+                </div>
+            
+
+            <div class="questions-content">
+                
+                                <div class="question-content question-content-type-1" id="6172691157aad2488852902f" data-id="6172691157aad2488852902f"
+                                     data-commit="false" data-disorder="1">
+                                        
+
+
+
+<div class="exam-question">
+    <span class="question-index ellipsis theme-skin">1.</span>
+    
+    <span class="question-name">  项目团队收到的原材料未能满足产品的质量需求，供应商的合同中没有记录质量规范。 项目经理应该做什么？
+The raw materials received by the project team failed to meet the quality requirements of the product, and the vendor's contract did not document the quality specifications. What should the project manager do?
+ </span>
+</div>
+
+
+    <div class="answers">
+        
+                    <div class="select single-select a. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad2488852902f1" data-keyId="6172691157aad2488852902f1" data-type="1" id="6172691157aad2488852902f1"
+                               disabled name="keyChk_questions_6172691157aad2488852902f_" data-name="key1"/>
+                        <label class="theme-skin" for="6172691157aad2488852902f1">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">A. </span>接受该材料并创建一份新合同 Accept the material and create a new contract </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select b. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad2488852902f2" data-keyId="6172691157aad2488852902f2" data-type="1" id="6172691157aad2488852902f2"
+                               disabled name="keyChk_questions_6172691157aad2488852902f_" data-name="key2"/>
+                        <label class="theme-skin" for="6172691157aad2488852902f2">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">B. </span>要求供应商替换该材料 Request the vendor to replace the material </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select c. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad2488852902f3" data-keyId="6172691157aad2488852902f3" data-type="1" id="6172691157aad2488852902f3"
+                               disabled name="keyChk_questions_6172691157aad2488852902f_" data-name="key3"/>
+                        <label class="theme-skin" for="6172691157aad2488852902f3">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">C. </span>请求供应商采取纠正措施 Request vendor to take corrective action </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select d. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad2488852902f4" data-keyId="6172691157aad2488852902f4" data-type="1" id="6172691157aad2488852902f4"
+                               disabled name="keyChk_questions_6172691157aad2488852902f_" data-name="key4"/>
+                        <label class="theme-skin" for="6172691157aad2488852902f4">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">D. </span>拒绝该材料并创建一份变更单 Reject the material and create a change sheet </span>
+                        </label>
+                    </div>
+                
+
+    </div>
+
+
+    <div class="analysis">
+        
+            <div class="result-container">
+                <i class="icon icon-m_exam_parsing error"></i>答错了
+            </div>
+            <div class="operation-container">
+                <span class="item collect"><i class="icon icon-m_exam_collection"></i>收藏</span>
+                
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员得分：</div>
+                <div class="analysis-content question-com-answer">0.0（本题分数：1.0）
+                </div>
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员答案：</div>
+                <div class="analysis-content question-com-answer error"></div>
+            </div>
+        
+            <div class="analysis-row ">
+                <div class="analysis-title">正确答案：</div>
+                <div class="analysis-content question-ans-right">D</div>
+                <div class="analysis-content question-ans-right hidden">D</div>
+            </div>
+            <div class="analysis-row">
+                <div class="analysis-title">解释说明：</div>
+                <div class="analysis-content question-analysis textalign-justify display-block">PMBOK P499 12.3.3.4 控制采购，输出，变更请求。关键词“合同中没有记录”需要更新合同，往往要先在内部进行变更控制，D选项合适。A选项直接创建新合同，不合适。B要求替换没有依据。C采取纠正措施前需要先提出变更；</div>
+            </div>
+        
+    </div>
+
+                    <div class="question-operation operation-icon " data-type="1"
+                         data-toggle="tooltip" data-placement="top" data-container="body" title="">
+                        <i class="icon "></i>
+                    </div>
+                
+
+                                </div>
+                            
+                                <div class="question-content question-content-type-1" id="6172691157aad2488852902e" data-id="6172691157aad2488852902e"
+                                     data-commit="false" data-disorder="1">
+                                        
+
+
+
+<div class="exam-question">
+    <span class="question-index ellipsis theme-skin">2.</span>
+    
+    <span class="question-name">  对于一个长期的基础设施项目，由于全球商业环境，项目经理必须获得风险最小的供应商。项目经理应该使用什么合同类型？
+For a long-term infrastructure project, the project manager must acquire vendors with the lowest possible risk due to the global business climate .  What type of contract should the project manager use?
+ </span>
+</div>
+
+
+    <div class="answers">
+        
+                    <div class="select single-select a. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad2488852902e1" data-keyId="6172691157aad2488852902e1" data-type="1" id="6172691157aad2488852902e1"
+                               disabled name="keyChk_questions_6172691157aad2488852902e_" data-name="key1"/>
+                        <label class="theme-skin" for="6172691157aad2488852902e1">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">A. </span>固定总价合同 Firm Fixed Price  Contract </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select b. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad2488852902e2" data-keyId="6172691157aad2488852902e2" data-type="1" id="6172691157aad2488852902e2"
+                               disabled name="keyChk_questions_6172691157aad2488852902e_" data-name="key2"/>
+                        <label class="theme-skin" for="6172691157aad2488852902e2">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">B. </span>成本加固定费用合同 Cost Plus Fixed Fee  Contract </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select c. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad2488852902e3" data-keyId="6172691157aad2488852902e3" data-type="1" id="6172691157aad2488852902e3"
+                               disabled name="keyChk_questions_6172691157aad2488852902e_" data-name="key3"/>
+                        <label class="theme-skin" for="6172691157aad2488852902e3">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">C. </span>总价加激励费用合同 Fixed Price Incentive fee Contract </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select d. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad2488852902e4" data-keyId="6172691157aad2488852902e4" data-type="1" id="6172691157aad2488852902e4"
+                               disabled name="keyChk_questions_6172691157aad2488852902e_" data-name="key4"/>
+                        <label class="theme-skin" for="6172691157aad2488852902e4">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">D. </span>总价加经济价格调整合同 Fixed Price with Economic Price Adjustment (FPEPA) Contract </span>
+                        </label>
+                    </div>
+                
+
+    </div>
+
+
+    <div class="analysis">
+        
+            <div class="result-container">
+                <i class="icon icon-m_exam_parsing error"></i>答错了
+            </div>
+            <div class="operation-container">
+                <span class="item collect"><i class="icon icon-m_exam_collection"></i>收藏</span>
+                
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员得分：</div>
+                <div class="analysis-content question-com-answer">0.0（本题分数：1.0）
+                </div>
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员答案：</div>
+                <div class="analysis-content question-com-answer error"></div>
+            </div>
+        
+            <div class="analysis-row ">
+                <div class="analysis-title">正确答案：</div>
+                <div class="analysis-content question-ans-right">D</div>
+                <div class="analysis-content question-ans-right hidden">D</div>
+            </div>
+            <div class="analysis-row">
+                <div class="analysis-title">解释说明：</div>
+                <div class="analysis-content question-analysis textalign-justify display-block">PMBOK P471, 12.1.1.6 合同类型，键字：长期，全球环境，风险最小。风险小需要采取总价合同，长期和不确定的全球环境需要加上经济价格调整，选项D正确。</div>
+            </div>
+        
+    </div>
+
+                    <div class="question-operation operation-icon " data-type="1"
+                         data-toggle="tooltip" data-placement="top" data-container="body" title="">
+                        <i class="icon "></i>
+                    </div>
+                
+
+                                </div>
+                            
+                                <div class="question-content question-content-type-1" id="6172691157aad2488852902b" data-id="6172691157aad2488852902b"
+                                     data-commit="false" data-disorder="1">
+                                        
+
+
+
+<div class="exam-question">
+    <span class="question-index ellipsis theme-skin">3.</span>
+    
+    <span class="question-name">  一个在国外工作的项目团队被转移到项目经理所在的国家。下一个工作周是这个团队的宗教节日，这些团队成员要求在这一周放假。 项目经理应该怎么做？
+A project team that works abroad is relocated to the project manager's local country. An upcoming work week is a religious holiday for this team. These team members request to take that week off  . What should the project manager do?
+ </span>
+</div>
+
+
+    <div class="answers">
+        
+                    <div class="select single-select a. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad2488852902b1" data-keyId="6172691157aad2488852902b1" data-type="1" id="6172691157aad2488852902b1"
+                               disabled name="keyChk_questions_6172691157aad2488852902b_" data-name="key1"/>
+                        <label class="theme-skin" for="6172691157aad2488852902b1">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">A. </span>与法律部门核对该团队的合同条件，并遵守其答复与建议 Check with the legal department regarding this team's contract conditions and adhere to their responses and suggestions </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select b. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad2488852902b2" data-keyId="6172691157aad2488852902b2" data-type="1" id="6172691157aad2488852902b2"
+                               disabled name="keyChk_questions_6172691157aad2488852902b_" data-name="key2"/>
+                        <label class="theme-skin" for="6172691157aad2488852902b2">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">B. </span>批准该请求，并让原来的团队休假，作为他们辛勤工作的奖励 Approve the request and allow the original team off as a reward for hard work </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select c. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad2488852902b3" data-keyId="6172691157aad2488852902b3" data-type="1" id="6172691157aad2488852902b3"
+                               disabled name="keyChk_questions_6172691157aad2488852902b_" data-name="key3"/>
+                        <label class="theme-skin" for="6172691157aad2488852902b3">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">C. </span>批准该请求，作为对其重要性的认可 Approve the request as an acknowledgement of its importance </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select d. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad2488852902b4" data-keyId="6172691157aad2488852902b4" data-type="1" id="6172691157aad2488852902b4"
+                               disabled name="keyChk_questions_6172691157aad2488852902b_" data-name="key4"/>
+                        <label class="theme-skin" for="6172691157aad2488852902b4">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">D. </span>拒绝该请求，以避免对进度计划造成负面影响 Deny the request to avoid a negative impact on the schedule </span>
+                        </label>
+                    </div>
+                
+
+    </div>
+
+
+    <div class="analysis">
+        
+            <div class="result-container">
+                <i class="icon icon-m_exam_parsing error"></i>答错了
+            </div>
+            <div class="operation-container">
+                <span class="item collect"><i class="icon icon-m_exam_collection"></i>收藏</span>
+                
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员得分：</div>
+                <div class="analysis-content question-com-answer">0.0（本题分数：1.0）
+                </div>
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员答案：</div>
+                <div class="analysis-content question-com-answer error"></div>
+            </div>
+        
+            <div class="analysis-row ">
+                <div class="analysis-title">正确答案：</div>
+                <div class="analysis-content question-ans-right">A</div>
+                <div class="analysis-content question-ans-right hidden">A</div>
+            </div>
+            <div class="analysis-row">
+                <div class="analysis-title">解释说明：</div>
+                <div class="analysis-content question-analysis textalign-justify display-block">PMBOK P496, 12.3.1.3 控制采购-输入-协议。首先，根据谋定而后动原理，直接接受或拒绝都是不合适的，这样已经可以排除BCD选项了。从A选项来看，显然是将该团队的选用当成了一个采购过程(购买劳动)，故属于控制采购，故选A。</div>
+            </div>
+        
+    </div>
+
+                    <div class="question-operation operation-icon " data-type="1"
+                         data-toggle="tooltip" data-placement="top" data-container="body" title="">
+                        <i class="icon "></i>
+                    </div>
+                
+
+                                </div>
+                            
+                                <div class="question-content question-content-type-1" id="6172691157aad2488852902a" data-id="6172691157aad2488852902a"
+                                     data-commit="false" data-disorder="1">
+                                        
+
+
+
+<div class="exam-question">
+    <span class="question-index ellipsis theme-skin">4.</span>
+    
+    <span class="question-name">  一个供应商提供的材料不符合技术要求，该供应商称该要求不属于合同的一部分，若要避免这个问题，项目经理应该事先做什么？
+The material provided by a vendor does not meet the technical requirements, and the vendor claims that the requirements are not part of the contract. To avoid this issue, what should the project manager do beforehand?
+ </span>
+</div>
+
+
+    <div class="answers">
+        
+                    <div class="select single-select a. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad2488852902a1" data-keyId="6172691157aad2488852902a1" data-type="1" id="6172691157aad2488852902a1"
+                               disabled name="keyChk_questions_6172691157aad2488852902a_" data-name="key1"/>
+                        <label class="theme-skin" for="6172691157aad2488852902a1">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">A. </span>审查采购工作说明书 (SOW)的批准 Review the approval of the procurement statement of work (SOW) </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select b. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad2488852902a2" data-keyId="6172691157aad2488852902a2" data-type="1" id="6172691157aad2488852902a2"
+                               disabled name="keyChk_questions_6172691157aad2488852902a_" data-name="key2"/>
+                        <label class="theme-skin" for="6172691157aad2488852902a2">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">B. </span>进行内部检查 Execute in-house inspections </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select c. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad2488852902a3" data-keyId="6172691157aad2488852902a3" data-type="1" id="6172691157aad2488852902a3"
+                               disabled name="keyChk_questions_6172691157aad2488852902a_" data-name="key3"/>
+                        <label class="theme-skin" for="6172691157aad2488852902a3">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">C. </span>执行风险识别活动 Execute risk identification activities </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select d. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad2488852902a4" data-keyId="6172691157aad2488852902a4" data-type="1" id="6172691157aad2488852902a4"
+                               disabled name="keyChk_questions_6172691157aad2488852902a_" data-name="key4"/>
+                        <label class="theme-skin" for="6172691157aad2488852902a4">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">D. </span>对供应商的场所进行检查 Hold inspections at the vendor’s premises </span>
+                        </label>
+                    </div>
+                
+
+    </div>
+
+
+    <div class="analysis">
+        
+            <div class="result-container">
+                <i class="icon icon-m_exam_parsing error"></i>答错了
+            </div>
+            <div class="operation-container">
+                <span class="item collect"><i class="icon icon-m_exam_collection"></i>收藏</span>
+                
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员得分：</div>
+                <div class="analysis-content question-com-answer">0.0（本题分数：1.0）
+                </div>
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员答案：</div>
+                <div class="analysis-content question-com-answer error"></div>
+            </div>
+        
+            <div class="analysis-row ">
+                <div class="analysis-title">正确答案：</div>
+                <div class="analysis-content question-ans-right">A</div>
+                <div class="analysis-content question-ans-right hidden">A</div>
+            </div>
+            <div class="analysis-row">
+                <div class="analysis-title">解释说明：</div>
+                <div class="analysis-content question-analysis textalign-justify display-block">PMBOK P477, 12.1.3.4,-规划采购输出-采购工作说明书。题目关键词"供应商声称不属于合同一部分，若要避免"，可知是在规划采购阶段，未对范围进行完整定义，应当对定义的文件即采购工作说明书进行重新审查，故选A。内部检查是发现之后事后做的，排除B，风险识别活动可能不能完全避免这个问题，排除C，对供应商场地进行检查和题目要求没有关系，排除D</div>
+            </div>
+        
+    </div>
+
+                    <div class="question-operation operation-icon " data-type="1"
+                         data-toggle="tooltip" data-placement="top" data-container="body" title="">
+                        <i class="icon "></i>
+                    </div>
+                
+
+                                </div>
+                            
+                                <div class="question-content question-content-type-1" id="6172691157aad2488852902d" data-id="6172691157aad2488852902d"
+                                     data-commit="false" data-disorder="1">
+                                        
+
+
+
+<div class="exam-question">
+    <span class="question-index ellipsis theme-skin">5.</span>
+    
+    <span class="question-name">  由于项目执行期间的范围变更，项目经理确定供应商必须对一个已在使用的产品模块进行更改。项目经理首先做什么？
+Due to scope changes during project execution, the project manager identifies that a vendor must make changes to a product module already in use . What should the project manager do first?
+ </span>
+</div>
+
+
+    <div class="answers">
+        
+                    <div class="select single-select a. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad2488852902d1" data-keyId="6172691157aad2488852902d1" data-type="1" id="6172691157aad2488852902d1"
+                               disabled name="keyChk_questions_6172691157aad2488852902d_" data-name="key1"/>
+                        <label class="theme-skin" for="6172691157aad2488852902d1">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">A. </span>准备一份变更请求，以更新供应商的合同条款 Prepare a change requests to update contract terms with the vendor </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select b. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad2488852902d2" data-keyId="6172691157aad2488852902d2" data-type="1" id="6172691157aad2488852902d2"
+                               disabled name="keyChk_questions_6172691157aad2488852902d_" data-name="key2"/>
+                        <label class="theme-skin" for="6172691157aad2488852902d2">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">B. </span>检查采购管理计划和合同条款 Check the procurement management plan and the contract terms </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select c. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad2488852902d3" data-keyId="6172691157aad2488852902d3" data-type="1" id="6172691157aad2488852902d3"
+                               disabled name="keyChk_questions_6172691157aad2488852902d_" data-name="key3"/>
+                        <label class="theme-skin" for="6172691157aad2488852902d3">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">C. </span>将该信息更新到风险登记册和问题日志 Update the risk register and issue log with this information </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select d. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad2488852902d4" data-keyId="6172691157aad2488852902d4" data-type="1" id="6172691157aad2488852902d4"
+                               disabled name="keyChk_questions_6172691157aad2488852902d_" data-name="key4"/>
+                        <label class="theme-skin" for="6172691157aad2488852902d4">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">D. </span>直接与供应商谈达成协议 Negotiate directly with the vendor to reach an agreement </span>
+                        </label>
+                    </div>
+                
+
+    </div>
+
+
+    <div class="analysis">
+        
+            <div class="result-container">
+                <i class="icon icon-m_exam_parsing error"></i>答错了
+            </div>
+            <div class="operation-container">
+                <span class="item collect"><i class="icon icon-m_exam_collection"></i>收藏</span>
+                
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员得分：</div>
+                <div class="analysis-content question-com-answer">0.0（本题分数：1.0）
+                </div>
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员答案：</div>
+                <div class="analysis-content question-com-answer error"></div>
+            </div>
+        
+            <div class="analysis-row ">
+                <div class="analysis-title">正确答案：</div>
+                <div class="analysis-content question-ans-right">A</div>
+                <div class="analysis-content question-ans-right hidden">A</div>
+            </div>
+            <div class="analysis-row">
+                <div class="analysis-title">解释说明：</div>
+                <div class="analysis-content question-analysis textalign-justify display-block">PMBOK 6th 4.6 实施整体变更控制，题干中帮助判断的关键字：范围变更。确定变更了，就直接准备变更请求就好了。</div>
+            </div>
+        
+    </div>
+
+                    <div class="question-operation operation-icon " data-type="1"
+                         data-toggle="tooltip" data-placement="top" data-container="body" title="">
+                        <i class="icon "></i>
+                    </div>
+                
+
+                                </div>
+                            
+                                <div class="question-content question-content-type-1" id="6172691157aad2488852902c" data-id="6172691157aad2488852902c"
+                                     data-commit="false" data-disorder="1">
+                                        
+
+
+
+<div class="exam-question">
+    <span class="question-index ellipsis theme-skin">6.</span>
+    
+    <span class="question-name">  采购部门要求项目经理提供一个项目的招标文件。这文件中应该包含哪些内容？
+The procurement department asks the project manager for a project's bid documents. What should be included in these documents?
+ </span>
+</div>
+
+
+    <div class="answers">
+        
+                    <div class="select single-select a. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad2488852902c1" data-keyId="6172691157aad2488852902c1" data-type="1" id="6172691157aad2488852902c1"
+                               disabled name="keyChk_questions_6172691157aad2488852902c_" data-name="key1"/>
+                        <label class="theme-skin" for="6172691157aad2488852902c1">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">A. </span>变更请求 The change requests </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select b. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad2488852902c2" data-keyId="6172691157aad2488852902c2" data-type="1" id="6172691157aad2488852902c2"
+                               disabled name="keyChk_questions_6172691157aad2488852902c_" data-name="key2"/>
+                        <label class="theme-skin" for="6172691157aad2488852902c2">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">B. </span>选择的卖方 The selected sellers </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select c. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad2488852902c3" data-keyId="6172691157aad2488852902c3" data-type="1" id="6172691157aad2488852902c3"
+                               disabled name="keyChk_questions_6172691157aad2488852902c_" data-name="key3"/>
+                        <label class="theme-skin" for="6172691157aad2488852902c3">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">C. </span>质量测量指标 The quality metrics </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select d. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad2488852902c4" data-keyId="6172691157aad2488852902c4" data-type="1" id="6172691157aad2488852902c4"
+                               disabled name="keyChk_questions_6172691157aad2488852902c_" data-name="key4"/>
+                        <label class="theme-skin" for="6172691157aad2488852902c4">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">D. </span>建议邀请书 The request for proposal </span>
+                        </label>
+                    </div>
+                
+
+    </div>
+
+
+    <div class="analysis">
+        
+            <div class="result-container">
+                <i class="icon icon-m_exam_parsing error"></i>答错了
+            </div>
+            <div class="operation-container">
+                <span class="item collect"><i class="icon icon-m_exam_collection"></i>收藏</span>
+                
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员得分：</div>
+                <div class="analysis-content question-com-answer">0.0（本题分数：1.0）
+                </div>
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员答案：</div>
+                <div class="analysis-content question-com-answer error"></div>
+            </div>
+        
+            <div class="analysis-row ">
+                <div class="analysis-title">正确答案：</div>
+                <div class="analysis-content question-ans-right">D</div>
+                <div class="analysis-content question-ans-right hidden">D</div>
+            </div>
+            <div class="analysis-row">
+                <div class="analysis-title">解释说明：</div>
+                <div class="analysis-content question-analysis textalign-justify display-block">PMBOK P477, 12.1.3.3招标文件，三种文件类型(书上原文)。采购文件中不包含变更请求，排除A。选择的卖方在采购管理计划中，排除B，质量测量指标是规划质量管理的输出。排除C。</div>
+            </div>
+        
+    </div>
+
+                    <div class="question-operation operation-icon " data-type="1"
+                         data-toggle="tooltip" data-placement="top" data-container="body" title="">
+                        <i class="icon "></i>
+                    </div>
+                
+
+                                </div>
+                            
+                                <div class="question-content question-content-type-1" id="6172691157aad24888529036" data-id="6172691157aad24888529036"
+                                     data-commit="false" data-disorder="1">
+                                        
+
+
+
+<div class="exam-question">
+    <span class="question-index ellipsis theme-skin">7.</span>
+    
+    <span class="question-name">  某开发商按合同为某公司建设和运营一个工厂，合同采用一次性付清钱款的全包式合同。该公司将采购该工厂生产的所有产品。该公司不熟悉此类合同安排，要求在项目实施前 必须提供保证。 项目经理该做什么？
+A developer builds and operates a factory for a company under a contract that uses an all-inclusive contract for a one-time payment. The company will procure all the products produced at the factory. The company is not familiar with such contractual arrangements and requires assurance that the project will be implemented . What should the project manager do?
+ </span>
+</div>
+
+
+    <div class="answers">
+        
+                    <div class="select single-select a. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290361" data-keyId="6172691157aad248885290361" data-type="1" id="6172691157aad248885290361"
+                               disabled name="keyChk_questions_6172691157aad24888529036_" data-name="key1"/>
+                        <label class="theme-skin" for="6172691157aad248885290361">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">A. </span>将情况告知变更控制委员会CCB，并征得其批准 Inform the Change Control Board of the situation and obtain its approval </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select b. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290362" data-keyId="6172691157aad248885290362" data-type="1" id="6172691157aad248885290362"
+                               disabled name="keyChk_questions_6172691157aad24888529036_" data-name="key2"/>
+                        <label class="theme-skin" for="6172691157aad248885290362">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">B. </span>安排与该开发商开会讨论合同条款 Arrange a meeting with the developer to discuss the terms of the contract </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select c. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290363" data-keyId="6172691157aad248885290363" data-type="1" id="6172691157aad248885290363"
+                               disabled name="keyChk_questions_6172691157aad24888529036_" data-name="key3"/>
+                        <label class="theme-skin" for="6172691157aad248885290363">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">C. </span>将该合同上报给投资委员会，待其审批 Escalate the contract to the Investment Committee for approval </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select d. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290364" data-keyId="6172691157aad248885290364" data-type="1" id="6172691157aad248885290364"
+                               disabled name="keyChk_questions_6172691157aad24888529036_" data-name="key4"/>
+                        <label class="theme-skin" for="6172691157aad248885290364">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">D. </span>将范围管理计划和质量管理计划提交给投资委员会，待其审批 Submit the scope management plan and quality management plan to the Investment Committee for approval </span>
+                        </label>
+                    </div>
+                
+
+    </div>
+
+
+    <div class="analysis">
+        
+            <div class="result-container">
+                <i class="icon icon-m_exam_parsing error"></i>答错了
+            </div>
+            <div class="operation-container">
+                <span class="item collect"><i class="icon icon-m_exam_collection"></i>收藏</span>
+                
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员得分：</div>
+                <div class="analysis-content question-com-answer">0.0（本题分数：1.0）
+                </div>
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员答案：</div>
+                <div class="analysis-content question-com-answer error"></div>
+            </div>
+        
+            <div class="analysis-row ">
+                <div class="analysis-title">正确答案：</div>
+                <div class="analysis-content question-ans-right">B</div>
+                <div class="analysis-content question-ans-right hidden">B</div>
+            </div>
+            <div class="analysis-row">
+                <div class="analysis-title">解释说明：</div>
+                <div class="analysis-content question-analysis textalign-justify display-block">PMBOK P487 12.2.2.3 实施采购，工具技术，投标人会议：目的是确保所有潜在投标人对采购要求都有清楚且一致的理解。关键词“不熟悉此类合同安排，PM应该做什么”即如何确保合同顺利执行，最有效的是会议沟通从而达成一致。其他选项未涉及合同谈判；</div>
+            </div>
+        
+    </div>
+
+                    <div class="question-operation operation-icon " data-type="1"
+                         data-toggle="tooltip" data-placement="top" data-container="body" title="">
+                        <i class="icon "></i>
+                    </div>
+                
+
+                                </div>
+                            
+                                <div class="question-content question-content-type-1" id="6172691157aad24888529037" data-id="6172691157aad24888529037"
+                                     data-commit="false" data-disorder="1">
+                                        
+
+
+
+<div class="exam-question">
+    <span class="question-index ellipsis theme-skin">8.</span>
+    
+    <span class="question-name">  正处于执行阶段的某项目收到了一个装配组件，生产该组件需要更多的原材料，超过了与供应商所立合同的规定。供应商要求为所使用的额外材料付款。项目经理该如何处理这种情况？
+A project in the execution phase receives an assembly component that requires more raw materials to produce than is required under a contract with the vendor. The vendor requests payment for the additional materials used . How should the project manager handle this situation?
+ </span>
+</div>
+
+
+    <div class="answers">
+        
+                    <div class="select single-select a. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290371" data-keyId="6172691157aad248885290371" data-type="1" id="6172691157aad248885290371"
+                               disabled name="keyChk_questions_6172691157aad24888529037_" data-name="key1"/>
+                        <label class="theme-skin" for="6172691157aad248885290371">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">A. </span>接受该额外成本，向供应商支付该成本 Accept the additional cost and pay the vendor the cost </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select b. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290372" data-keyId="6172691157aad248885290372" data-type="1" id="6172691157aad248885290372"
+                               disabled name="keyChk_questions_6172691157aad24888529037_" data-name="key2"/>
+                        <label class="theme-skin" for="6172691157aad248885290372">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">B. </span>接收这批材料，但将付款延迟至项目结束 Receive the materials, but defer payment until the end of the project </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select c. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290373" data-keyId="6172691157aad248885290373" data-type="1" id="6172691157aad248885290373"
+                               disabled name="keyChk_questions_6172691157aad24888529037_" data-name="key3"/>
+                        <label class="theme-skin" for="6172691157aad248885290373">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">C. </span>就降低该批额外材料的价格展开谈判 Negotiate to reduce the price of the additional material </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select d. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290374" data-keyId="6172691157aad248885290374" data-type="1" id="6172691157aad248885290374"
+                               disabled name="keyChk_questions_6172691157aad24888529037_" data-name="key4"/>
+                        <label class="theme-skin" for="6172691157aad248885290374">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">D. </span>拒绝该额外成本，让供应商承担该成本 Reject the additional cost and let the vendor bear the cost </span>
+                        </label>
+                    </div>
+                
+
+    </div>
+
+
+    <div class="analysis">
+        
+            <div class="result-container">
+                <i class="icon icon-m_exam_parsing error"></i>答错了
+            </div>
+            <div class="operation-container">
+                <span class="item collect"><i class="icon icon-m_exam_collection"></i>收藏</span>
+                
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员得分：</div>
+                <div class="analysis-content question-com-answer">0.0（本题分数：1.0）
+                </div>
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员答案：</div>
+                <div class="analysis-content question-com-answer error"></div>
+            </div>
+        
+            <div class="analysis-row ">
+                <div class="analysis-title">正确答案：</div>
+                <div class="analysis-content question-ans-right">D</div>
+                <div class="analysis-content question-ans-right hidden">D</div>
+            </div>
+            <div class="analysis-row">
+                <div class="analysis-title">解释说明：</div>
+                <div class="analysis-content question-analysis textalign-justify display-block">PMBOK P489 实施采购-输出-协议（合同）：道德题目，项目经理应该按照合同做事，超出合同的部分不应该谈判或接受，D选项正确。干扰选项C，在实际情况中更常见，但不适用于PMI考试答题；</div>
+            </div>
+        
+    </div>
+
+                    <div class="question-operation operation-icon " data-type="1"
+                         data-toggle="tooltip" data-placement="top" data-container="body" title="">
+                        <i class="icon "></i>
+                    </div>
+                
+
+                                </div>
+                            
+                                <div class="question-content question-content-type-1" id="6172691157aad24888529038" data-id="6172691157aad24888529038"
+                                     data-commit="false" data-disorder="1">
+                                        
+
+
+
+<div class="exam-question">
+    <span class="question-index ellipsis theme-skin">9.</span>
+    
+    <span class="question-name">  当项目经理休假时，团队成员无法决定是利用内部资源还是获得外部支持，团队不确定如何以及应在预算和风险因素中获得什么。团队成员接下来应该做什么？
+When the project manager is on leave, team members cannot decide whether to use internal resources or receive external support, and the team is not sure how and what to get from budget and risk factors. What should team members do next?
+ </span>
+</div>
+
+
+    <div class="answers">
+        
+                    <div class="select single-select a. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290381" data-keyId="6172691157aad248885290381" data-type="1" id="6172691157aad248885290381"
+                               disabled name="keyChk_questions_6172691157aad24888529038_" data-name="key1"/>
+                        <label class="theme-skin" for="6172691157aad248885290381">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">A. </span>将该问题升级上报给指导委员会 Escalate the issue to the Steering Committee </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select b. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290382" data-keyId="6172691157aad248885290382" data-type="1" id="6172691157aad248885290382"
+                               disabled name="keyChk_questions_6172691157aad24888529038_" data-name="key2"/>
+                        <label class="theme-skin" for="6172691157aad248885290382">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">B. </span>审查采购管理计划 Review the procurement management plan </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select c. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290383" data-keyId="6172691157aad248885290383" data-type="1" id="6172691157aad248885290383"
+                               disabled name="keyChk_questions_6172691157aad24888529038_" data-name="key3"/>
+                        <label class="theme-skin" for="6172691157aad248885290383">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">C. </span>重新检查变更管理计划 Re-examine the change management plan </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select d. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290384" data-keyId="6172691157aad248885290384" data-type="1" id="6172691157aad248885290384"
+                               disabled name="keyChk_questions_6172691157aad24888529038_" data-name="key4"/>
+                        <label class="theme-skin" for="6172691157aad248885290384">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">D. </span>查看所有外部活动的成本估算 View cost estimates for all external activities </span>
+                        </label>
+                    </div>
+                
+
+    </div>
+
+
+    <div class="analysis">
+        
+            <div class="result-container">
+                <i class="icon icon-m_exam_parsing error"></i>答错了
+            </div>
+            <div class="operation-container">
+                <span class="item collect"><i class="icon icon-m_exam_collection"></i>收藏</span>
+                
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员得分：</div>
+                <div class="analysis-content question-com-answer">0.0（本题分数：1.0）
+                </div>
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员答案：</div>
+                <div class="analysis-content question-com-answer error"></div>
+            </div>
+        
+            <div class="analysis-row ">
+                <div class="analysis-title">正确答案：</div>
+                <div class="analysis-content question-ans-right">B</div>
+                <div class="analysis-content question-ans-right hidden">B</div>
+            </div>
+            <div class="analysis-row">
+                <div class="analysis-title">解释说明：</div>
+                <div class="analysis-content question-analysis textalign-justify display-block">PMBOK （6）P475-12.1.3.1采购管理计划定义，内容：如何开展采购活动，估算、风险。关键词“不确定，内部资源还是获取外部资源”参考P479 12.1.3.6 自制或外购决策，表明处在采购管理的执行过程组；</div>
+            </div>
+        
+    </div>
+
+                    <div class="question-operation operation-icon " data-type="1"
+                         data-toggle="tooltip" data-placement="top" data-container="body" title="">
+                        <i class="icon "></i>
+                    </div>
+                
+
+                                </div>
+                            
+                                <div class="question-content question-content-type-1" id="6172691157aad24888529039" data-id="6172691157aad24888529039"
+                                     data-commit="false" data-disorder="1">
+                                        
+
+
+
+<div class="exam-question">
+    <span class="question-index ellipsis theme-skin">10.</span>
+    
+    <span class="question-name">  项目团队需要获得市场上提供的其他数据，以明确范围中的产品规格。在这种情况下应该使用哪种类型的投标文件？
+The project team needs to obtain additional data available on the market to clarify the product specifications in the scope . What type of bid document should be used in this case?
+ </span>
+</div>
+
+
+    <div class="answers">
+        
+                    <div class="select single-select a. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290391" data-keyId="6172691157aad248885290391" data-type="1" id="6172691157aad248885290391"
+                               disabled name="keyChk_questions_6172691157aad24888529039_" data-name="key1"/>
+                        <label class="theme-skin" for="6172691157aad248885290391">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">A. </span>建议邀请书(RFP) The request for proposal (RFP) </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select b. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290392" data-keyId="6172691157aad248885290392" data-type="1" id="6172691157aad248885290392"
+                               disabled name="keyChk_questions_6172691157aad24888529039_" data-name="key2"/>
+                        <label class="theme-skin" for="6172691157aad248885290392">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">B. </span>报价邀请书（RFQ) The Request for Quotation (RFQ) </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select c. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290393" data-keyId="6172691157aad248885290393" data-type="1" id="6172691157aad248885290393"
+                               disabled name="keyChk_questions_6172691157aad24888529039_" data-name="key3"/>
+                        <label class="theme-skin" for="6172691157aad248885290393">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">C. </span>信息邀请书（RFI） The request for information (RFI) </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select d. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290394" data-keyId="6172691157aad248885290394" data-type="1" id="6172691157aad248885290394"
+                               disabled name="keyChk_questions_6172691157aad24888529039_" data-name="key4"/>
+                        <label class="theme-skin" for="6172691157aad248885290394">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">D. </span>解决方案邀请书（RFS) The request for solution (RFS) </span>
+                        </label>
+                    </div>
+                
+
+    </div>
+
+
+    <div class="analysis">
+        
+            <div class="result-container">
+                <i class="icon icon-m_exam_parsing error"></i>答错了
+            </div>
+            <div class="operation-container">
+                <span class="item collect"><i class="icon icon-m_exam_collection"></i>收藏</span>
+                
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员得分：</div>
+                <div class="analysis-content question-com-answer">0.0（本题分数：1.0）
+                </div>
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员答案：</div>
+                <div class="analysis-content question-com-answer error"></div>
+            </div>
+        
+            <div class="analysis-row ">
+                <div class="analysis-title">正确答案：</div>
+                <div class="analysis-content question-ans-right">C</div>
+                <div class="analysis-content question-ans-right hidden">C</div>
+            </div>
+            <div class="analysis-row">
+                <div class="analysis-title">解释说明：</div>
+                <div class="analysis-content question-analysis textalign-justify display-block">PMBOK（6）P477，12.1.3.3招标文件-信息邀请书。如果需要卖方提供关于拟采购货物和服务的更多信息，就使用信息邀请书。随后一般还会使用报价邀请书或建议邀请书。</div>
+            </div>
+        
+    </div>
+
+                    <div class="question-operation operation-icon " data-type="1"
+                         data-toggle="tooltip" data-placement="top" data-container="body" title="">
+                        <i class="icon "></i>
+                    </div>
+                
+
+                                </div>
+                            
+                                <div class="question-content question-content-type-1" id="6172691157aad24888529032" data-id="6172691157aad24888529032"
+                                     data-commit="false" data-disorder="1">
+                                        
+
+
+
+<div class="exam-question">
+    <span class="question-index ellipsis theme-skin">11.</span>
+    
+    <span class="question-name">  由于某项目所需求的专业知识超出了公司的能力。公司与以在该领域的专业知识著称的供应商签约，但在项目进行过程中。公司却无法为精确的工作说明书（Sow）获得足够的详细信息。公司应采用哪种合同？
+The expertise required for a project exceeds the capacity of the company. The company contracts with vendors who are known for their expertise in the field, but in the course of the project. The company cannot get enough detail for a precise Statement of Work (SOW). What kind of contract should the company adopt?
+ </span>
+</div>
+
+
+    <div class="answers">
+        
+                    <div class="select single-select a. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290321" data-keyId="6172691157aad248885290321" data-type="1" id="6172691157aad248885290321"
+                               disabled name="keyChk_questions_6172691157aad24888529032_" data-name="key1"/>
+                        <label class="theme-skin" for="6172691157aad248885290321">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">A. </span>工料（T&amp;M) Time and Material (T&amp;M) </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select b. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290322" data-keyId="6172691157aad248885290322" data-type="1" id="6172691157aad248885290322"
+                               disabled name="keyChk_questions_6172691157aad24888529032_" data-name="key2"/>
+                        <label class="theme-skin" for="6172691157aad248885290322">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">B. </span>成本加奖励赛用(CPAS) Cost plus Reward Game (CPAS) </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select c. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290323" data-keyId="6172691157aad248885290323" data-type="1" id="6172691157aad248885290323"
+                               disabled name="keyChk_questions_6172691157aad24888529032_" data-name="key3"/>
+                        <label class="theme-skin" for="6172691157aad248885290323">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">C. </span>固定总价(FFP) Firm Fixed price (FFP) </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select d. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290324" data-keyId="6172691157aad248885290324" data-type="1" id="6172691157aad248885290324"
+                               disabled name="keyChk_questions_6172691157aad24888529032_" data-name="key4"/>
+                        <label class="theme-skin" for="6172691157aad248885290324">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">D. </span>成本加固定费用(CPF) Cost plus Fixed Fee (CPF) </span>
+                        </label>
+                    </div>
+                
+
+    </div>
+
+
+    <div class="analysis">
+        
+            <div class="result-container">
+                <i class="icon icon-m_exam_parsing error"></i>答错了
+            </div>
+            <div class="operation-container">
+                <span class="item collect"><i class="icon icon-m_exam_collection"></i>收藏</span>
+                
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员得分：</div>
+                <div class="analysis-content question-com-answer">0.0（本题分数：1.0）
+                </div>
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员答案：</div>
+                <div class="analysis-content question-com-answer error"></div>
+            </div>
+        
+            <div class="analysis-row ">
+                <div class="analysis-title">正确答案：</div>
+                <div class="analysis-content question-ans-right">A</div>
+                <div class="analysis-content question-ans-right hidden">A</div>
+            </div>
+            <div class="analysis-row">
+                <div class="analysis-title">解释说明：</div>
+                <div class="analysis-content question-analysis textalign-justify display-block">PMBOK P472 工料合同定义：无法快速编制出准确的工作说明书，往往使用于聘用专家或外部资源。关键词“专业知识著称，无法为精确的工作说明书（Sow）获得足够的详细信息；</div>
+            </div>
+        
+    </div>
+
+                    <div class="question-operation operation-icon " data-type="1"
+                         data-toggle="tooltip" data-placement="top" data-container="body" title="">
+                        <i class="icon "></i>
+                    </div>
+                
+
+                                </div>
+                            
+                                <div class="question-content question-content-type-1" id="6172691157aad24888529033" data-id="6172691157aad24888529033"
+                                     data-commit="false" data-disorder="1">
+                                        
+
+
+
+<div class="exam-question">
+    <span class="question-index ellipsis theme-skin">12.</span>
+    
+    <span class="question-name">  项目经理正在寻求对使用某新供应商提供的新软件解决方案的潜在风险进行详细分析，人们担心采购过程可能非常漫长。项目经理该做什么？
+The project manager is looking for a detailed analysis of potential cyber risks using a new software solution from a new vendor, and there are concerns that the procurement process may be very long . What should the project manager do?
+ </span>
+</div>
+
+
+    <div class="answers">
+        
+                    <div class="select single-select a. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290331" data-keyId="6172691157aad248885290331" data-type="1" id="6172691157aad248885290331"
+                               disabled name="keyChk_questions_6172691157aad24888529033_" data-name="key1"/>
+                        <label class="theme-skin" for="6172691157aad248885290331">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">A. </span>评估预期的供应商采购进度 Evaluate the expected vendor procurement schedule </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select b. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290332" data-keyId="6172691157aad248885290332" data-type="1" id="6172691157aad248885290332"
+                               disabled name="keyChk_questions_6172691157aad24888529033_" data-name="key2"/>
+                        <label class="theme-skin" for="6172691157aad248885290332">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">B. </span>将供应商采购标记为一种外部依赖关系 Mark vendor procurement as an external dependency </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select c. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290333" data-keyId="6172691157aad248885290333" data-type="1" id="6172691157aad248885290333"
+                               disabled name="keyChk_questions_6172691157aad24888529033_" data-name="key3"/>
+                        <label class="theme-skin" for="6172691157aad248885290333">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">C. </span>增加一个检查点，监督供应商采购的进度 Add a checkpoint to monitor vendor purchasing schedule </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select d. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290334" data-keyId="6172691157aad248885290334" data-type="1" id="6172691157aad248885290334"
+                               disabled name="keyChk_questions_6172691157aad24888529033_" data-name="key4"/>
+                        <label class="theme-skin" for="6172691157aad248885290334">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">D. </span>选择可能的方案，缩短供应商采购过程 Select possible solutions to shorten vendor procurement process </span>
+                        </label>
+                    </div>
+                
+
+    </div>
+
+
+    <div class="analysis">
+        
+            <div class="result-container">
+                <i class="icon icon-m_exam_parsing error"></i>答错了
+            </div>
+            <div class="operation-container">
+                <span class="item collect"><i class="icon icon-m_exam_collection"></i>收藏</span>
+                
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员得分：</div>
+                <div class="analysis-content question-com-answer">0.0（本题分数：1.0）
+                </div>
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员答案：</div>
+                <div class="analysis-content question-com-answer error"></div>
+            </div>
+        
+            <div class="analysis-row ">
+                <div class="analysis-title">正确答案：</div>
+                <div class="analysis-content question-ans-right">A</div>
+                <div class="analysis-content question-ans-right hidden">A</div>
+            </div>
+            <div class="analysis-row">
+                <div class="analysis-title">解释说明：</div>
+                <div class="analysis-content question-analysis textalign-justify display-block">PMBOK P487-12.2.2.4 数据分析-建议书评价。关键词“对使用某新供应商分析”“担心采购过程漫长”表明处在实施采购阶段，采购尚未进行或刚开始进行,PM应当开展建议书评价，分析供应商方案的进度,B,C的说法错误，D选项未评估直接要求缩短不合适；</div>
+            </div>
+        
+    </div>
+
+                    <div class="question-operation operation-icon " data-type="1"
+                         data-toggle="tooltip" data-placement="top" data-container="body" title="">
+                        <i class="icon "></i>
+                    </div>
+                
+
+                                </div>
+                            
+                                <div class="question-content question-content-type-1" id="6172691157aad24888529034" data-id="6172691157aad24888529034"
+                                     data-commit="false" data-disorder="1">
+                                        
+
+
+
+<div class="exam-question">
+    <span class="question-index ellipsis theme-skin">13.</span>
+    
+    <span class="question-name">  项目经理向采购团队发出签订新原材料合同的请求。采购团队请求提供所需产品规格的更多信息。在采购团队能够提交建议邀请书（RFP）以找到供应商之前，该过程在四周内有五个迭代。其中的一项关键路径任务导致项目延迟了四周。 项目经理本应采取什么措施来避免发生该延迟？
+The project manager sends a request to the purchasing team to sign a new raw material contract. The purchasing team requested more information on the required product specifications. There are five iterations of the process over four weeks before the procurement team is able to submit a Request for Proposal (RFP) to find a vendor. One of the critical path tasks caused the project to be delayed by four weeks. What should the project manager have done to prevent the delay?
+ </span>
+</div>
+
+
+    <div class="answers">
+        
+                    <div class="select single-select a. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290341" data-keyId="6172691157aad248885290341" data-type="1" id="6172691157aad248885290341"
+                               disabled name="keyChk_questions_6172691157aad24888529034_" data-name="key1"/>
+                        <label class="theme-skin" for="6172691157aad248885290341">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">A. </span>与采购团队开会讨论这些需求 Have a meeting with the purchasing team to discuss these requirements </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select b. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290342" data-keyId="6172691157aad248885290342" data-type="1" id="6172691157aad248885290342"
+                               disabled name="keyChk_questions_6172691157aad24888529034_" data-name="key2"/>
+                        <label class="theme-skin" for="6172691157aad248885290342">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">B. </span>与采购团队制定服务水平协议 Develop service level agreements with the purchasing team </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select c. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290343" data-keyId="6172691157aad248885290343" data-type="1" id="6172691157aad248885290343"
+                               disabled name="keyChk_questions_6172691157aad24888529034_" data-name="key3"/>
+                        <label class="theme-skin" for="6172691157aad248885290343">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">C. </span>将这些沟通问题上报给项目发起人 Escalate these communication issues to the project sponsor </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select d. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290344" data-keyId="6172691157aad248885290344" data-type="1" id="6172691157aad248885290344"
+                               disabled name="keyChk_questions_6172691157aad24888529034_" data-name="key4"/>
+                        <label class="theme-skin" for="6172691157aad248885290344">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">D. </span>让供应商更快地完成交付，以避免任何延迟 Have vendors to complete deliveries faster to avoid any delays </span>
+                        </label>
+                    </div>
+                
+
+    </div>
+
+
+    <div class="analysis">
+        
+            <div class="result-container">
+                <i class="icon icon-m_exam_parsing error"></i>答错了
+            </div>
+            <div class="operation-container">
+                <span class="item collect"><i class="icon icon-m_exam_collection"></i>收藏</span>
+                
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员得分：</div>
+                <div class="analysis-content question-com-answer">0.0（本题分数：1.0）
+                </div>
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员答案：</div>
+                <div class="analysis-content question-com-answer error"></div>
+            </div>
+        
+            <div class="analysis-row ">
+                <div class="analysis-title">正确答案：</div>
+                <div class="analysis-content question-ans-right">A</div>
+                <div class="analysis-content question-ans-right hidden">A</div>
+            </div>
+            <div class="analysis-row">
+                <div class="analysis-title">解释说明：</div>
+                <div class="analysis-content question-analysis textalign-justify display-block">PMBOK P488 实施采购，工具技术，人际关系与团队技能，谈判。关键词“采购团队请求更多信息，五个迭代，关键路径延迟，本应该采取措施避免”，表明PM在实施采购的早期未与采购团队达成共识。因此A开会讨论最合适；</div>
+            </div>
+        
+    </div>
+
+                    <div class="question-operation operation-icon " data-type="1"
+                         data-toggle="tooltip" data-placement="top" data-container="body" title="">
+                        <i class="icon "></i>
+                    </div>
+                
+
+                                </div>
+                            
+                                <div class="question-content question-content-type-1" id="6172691157aad24888529035" data-id="6172691157aad24888529035"
+                                     data-commit="false" data-disorder="1">
+                                        
+
+
+
+<div class="exam-question">
+    <span class="question-index ellipsis theme-skin">14.</span>
+    
+    <span class="question-name">  在某建设施工项目中,项目经理与分包商因项目团队提出的某些变更订单引起的资金索赔发生纠纷。为解决该问题，项目经理应采取的第一个步骤是什么？
+In a construction project, the project manager and the subcontractor have a dispute over a fund claim arising from certain change orders made by the project team. What is the first step the project manager should take to resolve the issue?
+ </span>
+</div>
+
+
+    <div class="answers">
+        
+                    <div class="select single-select a. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290351" data-keyId="6172691157aad248885290351" data-type="1" id="6172691157aad248885290351"
+                               disabled name="keyChk_questions_6172691157aad24888529035_" data-name="key1"/>
+                        <label class="theme-skin" for="6172691157aad248885290351">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">A. </span>替代性纠纷解决方案（ADR） Alternative Dispute Resolution (ADR) </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select b. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290352" data-keyId="6172691157aad248885290352" data-type="1" id="6172691157aad248885290352"
+                               disabled name="keyChk_questions_6172691157aad24888529035_" data-name="key2"/>
+                        <label class="theme-skin" for="6172691157aad248885290352">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">B. </span>磋商 Make consultations </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select c. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290353" data-keyId="6172691157aad248885290353" data-type="1" id="6172691157aad248885290353"
+                               disabled name="keyChk_questions_6172691157aad24888529035_" data-name="key3"/>
+                        <label class="theme-skin" for="6172691157aad248885290353">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">C. </span>法律诉讼 Initiate legal actions </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select d. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290354" data-keyId="6172691157aad248885290354" data-type="1" id="6172691157aad248885290354"
+                               disabled name="keyChk_questions_6172691157aad24888529035_" data-name="key4"/>
+                        <label class="theme-skin" for="6172691157aad248885290354">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">D. </span>增加预算请求 Increase the budget request </span>
+                        </label>
+                    </div>
+                
+
+    </div>
+
+
+    <div class="analysis">
+        
+            <div class="result-container">
+                <i class="icon icon-m_exam_parsing error"></i>答错了
+            </div>
+            <div class="operation-container">
+                <span class="item collect"><i class="icon icon-m_exam_collection"></i>收藏</span>
+                
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员得分：</div>
+                <div class="analysis-content question-com-answer">0.0（本题分数：1.0）
+                </div>
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员答案：</div>
+                <div class="analysis-content question-com-answer error"></div>
+            </div>
+        
+            <div class="analysis-row ">
+                <div class="analysis-title">正确答案：</div>
+                <div class="analysis-content question-ans-right">B</div>
+                <div class="analysis-content question-ans-right hidden">B</div>
+            </div>
+            <div class="analysis-row">
+                <div class="analysis-title">解释说明：</div>
+                <div class="analysis-content question-analysis textalign-justify display-block">PMBOK P498 12.3.2.2 控制采购-工具技术-索赔管理。谈判是解决所有索赔和争议的首选方法；</div>
+            </div>
+        
+    </div>
+
+                    <div class="question-operation operation-icon " data-type="1"
+                         data-toggle="tooltip" data-placement="top" data-container="body" title="">
+                        <i class="icon "></i>
+                    </div>
+                
+
+                                </div>
+                            
+                                <div class="question-content question-content-type-1" id="6172691157aad24888529031" data-id="6172691157aad24888529031"
+                                     data-commit="false" data-disorder="1">
+                                        
+
+
+
+<div class="exam-question">
+    <span class="question-index ellipsis theme-skin">15.</span>
+    
+    <span class="question-name">  项目经理正与新批准的供应商共同努力交付一个软件项目，在收集需求时，超出范围的几个内容被确定为重要的系统特征:供应商合同不包括关于如何处理超出范围的内容的条款。项目经理该做什么？
+The project manager is working with the newly approved vendor to deliver a software project, and several out-of-scope items are identified as important system characteristics when collecting requirements: the vendor contract does not include provisions on how to handle out-of-scope items. What should the project manager do?
+ </span>
+</div>
+
+
+    <div class="answers">
+        
+                    <div class="select single-select a. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290311" data-keyId="6172691157aad248885290311" data-type="1" id="6172691157aad248885290311"
+                               disabled name="keyChk_questions_6172691157aad24888529031_" data-name="key1"/>
+                        <label class="theme-skin" for="6172691157aad248885290311">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">A. </span>告知项目相关方说，由于供应商的合同限制，重要的系统功能无法包含在范围之中 Inform project stakeholders that important system functions cannot be included in the scope due to vendor contractual limitations </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select b. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290312" data-keyId="6172691157aad248885290312" data-type="1" id="6172691157aad248885290312"
+                               disabled name="keyChk_questions_6172691157aad24888529031_" data-name="key2"/>
+                        <label class="theme-skin" for="6172691157aad248885290312">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">B. </span>坚持要求供应商将重要功能包含进来，确保该软件项目取得成功，并包含不可少的功能 Insist that the vendor include important features to ensure that the software project is successful and includes essential features </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select c. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290313" data-keyId="6172691157aad248885290313" data-type="1" id="6172691157aad248885290313"
+                               disabled name="keyChk_questions_6172691157aad24888529031_" data-name="key3"/>
+                        <label class="theme-skin" for="6172691157aad248885290313">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">C. </span>与供应商共同修改合同，以便将可用来实现重要功能的变更请求过程考虑进来 Work with vendors to modify contracts to take into account change request processes that can be used to implement important functions </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select d. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290314" data-keyId="6172691157aad248885290314" data-type="1" id="6172691157aad248885290314"
+                               disabled name="keyChk_questions_6172691157aad24888529031_" data-name="key4"/>
+                        <label class="theme-skin" for="6172691157aad248885290314">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">D. </span>将不太重要的内容从供应商的范围删除，并增加已被确定为重要系统功能的内容 Remove less important content from the vendor scope and add content that has been identified as important system functionality </span>
+                        </label>
+                    </div>
+                
+
+    </div>
+
+
+    <div class="analysis">
+        
+            <div class="result-container">
+                <i class="icon icon-m_exam_parsing error"></i>答错了
+            </div>
+            <div class="operation-container">
+                <span class="item collect"><i class="icon icon-m_exam_collection"></i>收藏</span>
+                
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员得分：</div>
+                <div class="analysis-content question-com-answer">0.0（本题分数：1.0）
+                </div>
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员答案：</div>
+                <div class="analysis-content question-com-answer error"></div>
+            </div>
+        
+            <div class="analysis-row ">
+                <div class="analysis-title">正确答案：</div>
+                <div class="analysis-content question-ans-right">C</div>
+                <div class="analysis-content question-ans-right hidden">C</div>
+            </div>
+            <div class="analysis-row">
+                <div class="analysis-title">解释说明：</div>
+                <div class="analysis-content question-analysis textalign-justify display-block">PMBOK P499 12.3.3.3 控制采购，输出，采购文档更新。关键词“正交付，合同不包括”表明在控制采购阶段，发生采购范围变更，需要更新合同。该操作需要与供应商共同协商完成；</div>
+            </div>
+        
+    </div>
+
+                    <div class="question-operation operation-icon " data-type="1"
+                         data-toggle="tooltip" data-placement="top" data-container="body" title="">
+                        <i class="icon "></i>
+                    </div>
+                
+
+                                </div>
+                            
+                                <div class="question-content question-content-type-1" id="6172691157aad24888529030" data-id="6172691157aad24888529030"
+                                     data-commit="false" data-disorder="1">
+                                        
+
+
+
+<div class="exam-question">
+    <span class="question-index ellipsis theme-skin">16.</span>
+    
+    <span class="question-name">  由于商品价格上涨，分包商希望增加其月度发票，项目经理拒绝该请求。 什么类型的合同会证明这一行为的合理性？
+Because of the increase in commodity prices, the subcontractor wanted to increase his monthly invoice and the project manager refused the request. What type of contract would justify this behavior?
+ </span>
+</div>
+
+
+    <div class="answers">
+        
+                    <div class="select single-select a. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290301" data-keyId="6172691157aad248885290301" data-type="1" id="6172691157aad248885290301"
+                               disabled name="keyChk_questions_6172691157aad24888529030_" data-name="key1"/>
+                        <label class="theme-skin" for="6172691157aad248885290301">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">A. </span>固定总价合同 Firm Fixed Price (FFP) Contract </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select b. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290302" data-keyId="6172691157aad248885290302" data-type="1" id="6172691157aad248885290302"
+                               disabled name="keyChk_questions_6172691157aad24888529030_" data-name="key2"/>
+                        <label class="theme-skin" for="6172691157aad248885290302">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">B. </span>总价加经济价格调整合同 Fixed Price with Economic Price Adjustment (FPEPA) Contract </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select c. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290303" data-keyId="6172691157aad248885290303" data-type="1" id="6172691157aad248885290303"
+                               disabled name="keyChk_questions_6172691157aad24888529030_" data-name="key3"/>
+                        <label class="theme-skin" for="6172691157aad248885290303">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">C. </span>工料合同（T&amp;M） Time and Material (T&amp;M) Contract </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select d. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290304" data-keyId="6172691157aad248885290304" data-type="1" id="6172691157aad248885290304"
+                               disabled name="keyChk_questions_6172691157aad24888529030_" data-name="key4"/>
+                        <label class="theme-skin" for="6172691157aad248885290304">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">D. </span>成本加固定费用合同 Cost plus Fixed Fee  Contract </span>
+                        </label>
+                    </div>
+                
+
+    </div>
+
+
+    <div class="analysis">
+        
+            <div class="result-container">
+                <i class="icon icon-m_exam_parsing error"></i>答错了
+            </div>
+            <div class="operation-container">
+                <span class="item collect"><i class="icon icon-m_exam_collection"></i>收藏</span>
+                
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员得分：</div>
+                <div class="analysis-content question-com-answer">0.0（本题分数：1.0）
+                </div>
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员答案：</div>
+                <div class="analysis-content question-com-answer error"></div>
+            </div>
+        
+            <div class="analysis-row ">
+                <div class="analysis-title">正确答案：</div>
+                <div class="analysis-content question-ans-right">A</div>
+                <div class="analysis-content question-ans-right hidden">A</div>
+            </div>
+            <div class="analysis-row">
+                <div class="analysis-title">解释说明：</div>
+                <div class="analysis-content question-analysis textalign-justify display-block">PMBOK P471 合同类型，固定总价合同FFP：不允许改变（除非范围改变）；A选项最强有力；产品价格上浮，那么根据经济价格调节和成本合同都可以要求增加，排除BD。工料合同可以确定单价或者确定数量，如果是确定数量，那么单价上浮也可以要求增加发票，排除C。</div>
+            </div>
+        
+    </div>
+
+                    <div class="question-operation operation-icon " data-type="1"
+                         data-toggle="tooltip" data-placement="top" data-container="body" title="">
+                        <i class="icon "></i>
+                    </div>
+                
+
+                                </div>
+                            
+                                <div class="question-content question-content-type-1" id="6172691157aad2488852903b" data-id="6172691157aad2488852903b"
+                                     data-commit="false" data-disorder="1">
+                                        
+
+
+
+<div class="exam-question">
+    <span class="question-index ellipsis theme-skin">17.</span>
+    
+    <span class="question-name">  一个旷日持久的项目接近尾声。客户告知项目经理，所发送的部分收尾文件未达到文件的新技术标准。客户声明其在该周刚刚发布新版本，且必须尽快发送新文件以关闭项目。项目经理该如何应对这种情况？
+A protracted project is drawing to a close . The customer informed the project manager that some of the closing documents sent did not meet the new technique criteria for the documents. The customer states that a new version was released during the week and that new documents must be sent as soon as possible to close the project. How should the project manager deal with this situation?
+ </span>
+</div>
+
+
+    <div class="answers">
+        
+                    <div class="select single-select a. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad2488852903b1" data-keyId="6172691157aad2488852903b1" data-type="1" id="6172691157aad2488852903b1"
+                               disabled name="keyChk_questions_6172691157aad2488852903b_" data-name="key1"/>
+                        <label class="theme-skin" for="6172691157aad2488852903b1">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">A. </span>根据该新标准更新所有文件，并将它们重新提交给客户，以便进行项目验收 Update all documents according to new criteria and re-submit them to the customer for the project acceptance </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select b. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad2488852903b2" data-keyId="6172691157aad2488852903b2" data-type="1" id="6172691157aad2488852903b2"
+                               disabled name="keyChk_questions_6172691157aad2488852903b_" data-name="key2"/>
+                        <label class="theme-skin" for="6172691157aad2488852903b2">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">B. </span>告知客户所签署的合同义务文件未包含该新标准 Inform the customer that the new criteria is not included in the contractual obligation document signed by the customer </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select c. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad2488852903b3" data-keyId="6172691157aad2488852903b3" data-type="1" id="6172691157aad2488852903b3"
+                               disabled name="keyChk_questions_6172691157aad2488852903b_" data-name="key3"/>
+                        <label class="theme-skin" for="6172691157aad2488852903b3">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">C. </span>更新项目风险登记册和项目管理计划，以符合该新标准 Update the project risk register and project management plan to meet the new criteria </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select d. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad2488852903b4" data-keyId="6172691157aad2488852903b4" data-type="1" id="6172691157aad2488852903b4"
+                               disabled name="keyChk_questions_6172691157aad2488852903b_" data-name="key4"/>
+                        <label class="theme-skin" for="6172691157aad2488852903b4">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">D. </span>继续编制所有收尾文件，不理会该新标准 Continue to prepare all closing documents, ignoring the new criteria </span>
+                        </label>
+                    </div>
+                
+
+    </div>
+
+
+    <div class="analysis">
+        
+            <div class="result-container">
+                <i class="icon icon-m_exam_parsing error"></i>答错了
+            </div>
+            <div class="operation-container">
+                <span class="item collect"><i class="icon icon-m_exam_collection"></i>收藏</span>
+                
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员得分：</div>
+                <div class="analysis-content question-com-answer">0.0（本题分数：1.0）
+                </div>
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员答案：</div>
+                <div class="analysis-content question-com-answer error"></div>
+            </div>
+        
+            <div class="analysis-row ">
+                <div class="analysis-title">正确答案：</div>
+                <div class="analysis-content question-ans-right">B</div>
+                <div class="analysis-content question-ans-right hidden">B</div>
+            </div>
+            <div class="analysis-row">
+                <div class="analysis-title">解释说明：</div>
+                <div class="analysis-content question-analysis textalign-justify display-block">PMBOK（6）P492，12.3-控制采购。对于新的技术标准，要通过变更程序实施变更，但AC选项均缺少了必要的评估环节就实施了，错误。选项D，置之不理也是不妥当的，排除后，只有B选项没有问题。如果客户方坚持要采用最新的技术标准，要通过整体变更控制流程进行更新。</div>
+            </div>
+        
+    </div>
+
+                    <div class="question-operation operation-icon " data-type="1"
+                         data-toggle="tooltip" data-placement="top" data-container="body" title="">
+                        <i class="icon "></i>
+                    </div>
+                
+
+                                </div>
+                            
+                                <div class="question-content question-content-type-1" id="6172691157aad24888529027" data-id="6172691157aad24888529027"
+                                     data-commit="false" data-disorder="1">
+                                        
+
+
+
+<div class="exam-question">
+    <span class="question-index ellipsis theme-skin">18.</span>
+    
+    <span class="question-name">  在交付服务过程中某外包项目报告存在几个人为错误，包括未完成程序，未得到正确遵循的程序以及未执行的一般性检查，总经理发现了这些问题，要求尽快提高服务质量。项目经理首先应该做什么？
+During the delivery of services, an outsourcing project reported several human errors, including uncompleted procedures, procedures that were not correctly followed, and general inspections that were not performed . The general manager discovered these issues and requested that the service quality be improved as soon as possible . What should the project manager do first?
+ </span>
+</div>
+
+
+    <div class="answers">
+        
+                    <div class="select single-select a. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290271" data-keyId="6172691157aad248885290271" data-type="1" id="6172691157aad248885290271"
+                               disabled name="keyChk_questions_6172691157aad24888529027_" data-name="key1"/>
+                        <label class="theme-skin" for="6172691157aad248885290271">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">A. </span>将惩罚条款纳入合同，以迫使该外包公司提高服务交付人员的水平 Include penalty clauses in the contract to force the outsourcing company to improve the level of service delivery personnel </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select b. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290272" data-keyId="6172691157aad248885290272" data-type="1" id="6172691157aad248885290272"
+                               disabled name="keyChk_questions_6172691157aad24888529027_" data-name="key2"/>
+                        <label class="theme-skin" for="6172691157aad248885290272">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">B. </span>提交变更请求，将资源的技能质量标准纳入与该外包公司签订的合同 Submit a change request to include the skill quality criteria of the resource in the contract with the outsourcing company </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select c. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290273" data-keyId="6172691157aad248885290273" data-type="1" id="6172691157aad248885290273"
+                               disabled name="keyChk_questions_6172691157aad24888529027_" data-name="key3"/>
+                        <label class="theme-skin" for="6172691157aad248885290273">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">C. </span>要求该外包公司制定相关过程并对服务交付人员进行培训 Request the outsourcing company is d to develop processes and train service delivery personnel </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select d. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290274" data-keyId="6172691157aad248885290274" data-type="1" id="6172691157aad248885290274"
+                               disabled name="keyChk_questions_6172691157aad24888529027_" data-name="key4"/>
+                        <label class="theme-skin" for="6172691157aad248885290274">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">D. </span>如果外包公司未提高服务的交付质量，则与该公司终止合同 Terminate the contract with the company, if the outsourcing company fails to improve the quality of service delivery </span>
+                        </label>
+                    </div>
+                
+
+    </div>
+
+
+    <div class="analysis">
+        
+            <div class="result-container">
+                <i class="icon icon-m_exam_parsing error"></i>答错了
+            </div>
+            <div class="operation-container">
+                <span class="item collect"><i class="icon icon-m_exam_collection"></i>收藏</span>
+                
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员得分：</div>
+                <div class="analysis-content question-com-answer">0.0（本题分数：1.0）
+                </div>
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员答案：</div>
+                <div class="analysis-content question-com-answer error"></div>
+            </div>
+        
+            <div class="analysis-row ">
+                <div class="analysis-title">正确答案：</div>
+                <div class="analysis-content question-ans-right">B</div>
+                <div class="analysis-content question-ans-right hidden">B</div>
+            </div>
+            <div class="analysis-row">
+                <div class="analysis-title">解释说明：</div>
+                <div class="analysis-content question-analysis textalign-justify display-block">PMBOK（6）P492，12.3-控制采购。“尽快”、“首先”应该做什么，处理情景中问题的顺序是：1.首先查阅合同中是否对此进行约定-&gt;2.如未约定，对合同进行变更，将检查标准纳入合同范围-&gt;3.根据新增加的合同条款监督合同的执行。按照这个顺序，选项B最靠前，正确。选项A，仅靠处罚不解决问题。选项C，所要求的相关服务要纳入合同范围，否则外包公司无履行义务。选项D，属于变更合同条款后的监督执行过程。</div>
+            </div>
+        
+    </div>
+
+                    <div class="question-operation operation-icon " data-type="1"
+                         data-toggle="tooltip" data-placement="top" data-container="body" title="">
+                        <i class="icon "></i>
+                    </div>
+                
+
+                                </div>
+                            
+                                <div class="question-content question-content-type-1" id="6172691157aad24888529028" data-id="6172691157aad24888529028"
+                                     data-commit="false" data-disorder="1">
+                                        
+
+
+
+<div class="exam-question">
+    <span class="question-index ellipsis theme-skin">19.</span>
+    
+    <span class="question-name">  某项目从一个新供应商订购了大量计算机备件。项目经理如何在达到项目时间表的同时确保产品质量？
+A project ordered a large number of computer spare parts from a new vendor. How can the project manager ensure product quality while sticking to the project schedule?
+ </span>
+</div>
+
+
+    <div class="answers">
+        
+                    <div class="select single-select a. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290281" data-keyId="6172691157aad248885290281" data-type="1" id="6172691157aad248885290281"
+                               disabled name="keyChk_questions_6172691157aad24888529028_" data-name="key1"/>
+                        <label class="theme-skin" for="6172691157aad248885290281">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">A. </span>确保提供商在发货前执行质量检查 Ensure that the provider performs a quality check before shipping </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select b. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290282" data-keyId="6172691157aad248885290282" data-type="1" id="6172691157aad248885290282"
+                               disabled name="keyChk_questions_6172691157aad24888529028_" data-name="key2"/>
+                        <label class="theme-skin" for="6172691157aad248885290282">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">B. </span>咨询主题专家(SME)应采用哪些标准 Request the subject matter expert (SME) what criteria should be used </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select c. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290283" data-keyId="6172691157aad248885290283" data-type="1" id="6172691157aad248885290283"
+                               disabled name="keyChk_questions_6172691157aad24888529028_" data-name="key3"/>
+                        <label class="theme-skin" for="6172691157aad248885290283">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">C. </span>根据故障率进行抽样检查 Carry out sample checks based on the failure rate </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select d. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290284" data-keyId="6172691157aad248885290284" data-type="1" id="6172691157aad248885290284"
+                               disabled name="keyChk_questions_6172691157aad24888529028_" data-name="key4"/>
+                        <label class="theme-skin" for="6172691157aad248885290284">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">D. </span>为客户购买更多备件 Buy more spare parts for the customers </span>
+                        </label>
+                    </div>
+                
+
+    </div>
+
+
+    <div class="analysis">
+        
+            <div class="result-container">
+                <i class="icon icon-m_exam_parsing error"></i>答错了
+            </div>
+            <div class="operation-container">
+                <span class="item collect"><i class="icon icon-m_exam_collection"></i>收藏</span>
+                
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员得分：</div>
+                <div class="analysis-content question-com-answer">0.0（本题分数：1.0）
+                </div>
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员答案：</div>
+                <div class="analysis-content question-com-answer error"></div>
+            </div>
+        
+            <div class="analysis-row ">
+                <div class="analysis-title">正确答案：</div>
+                <div class="analysis-content question-ans-right">B</div>
+                <div class="analysis-content question-ans-right hidden">B</div>
+            </div>
+            <div class="analysis-row">
+                <div class="analysis-title">解释说明：</div>
+                <div class="analysis-content question-analysis textalign-justify display-block">PMBOK（6）P477，12.1.3.4-采购工作说明书。工作说明书会充分详细地描述拟采购的产品、服务或成果，以便潜在卖方确定是否有能力提供此类产品、服务或成果。情景的描述突出强调了如何满足质量要求，关于供应商交付产品、服务的要求要在采购工作说明书中明确。选项AC，无规矩不成方圆，质量检查要基于明确的质量标准，在选项B之后。选项D，按照合同的约定，供应商要承担在维保期间损坏备件的修复，所以为客户购买更多的备件是错误的。</div>
+            </div>
+        
+    </div>
+
+                    <div class="question-operation operation-icon " data-type="1"
+                         data-toggle="tooltip" data-placement="top" data-container="body" title="">
+                        <i class="icon "></i>
+                    </div>
+                
+
+                                </div>
+                            
+                                <div class="question-content question-content-type-1" id="6172691157aad24888529025" data-id="6172691157aad24888529025"
+                                     data-commit="false" data-disorder="1">
+                                        
+
+
+
+<div class="exam-question">
+    <span class="question-index ellipsis theme-skin">20.</span>
+    
+    <span class="question-name">  某供应商已准备好将已完成的原型交给客户。收到该设备时，项目经理该做什么？
+A vendor is ready to hand over the completed prototype to the customer. What should the project manager do when the device is received?
+ </span>
+</div>
+
+
+    <div class="answers">
+        
+                    <div class="select single-select a. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290251" data-keyId="6172691157aad248885290251" data-type="1" id="6172691157aad248885290251"
+                               disabled name="keyChk_questions_6172691157aad24888529025_" data-name="key1"/>
+                        <label class="theme-skin" for="6172691157aad248885290251">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">A. </span>让该供应商提供所有采购文件的打印件 Have the vendor provide a printout of all procurement documentations </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select b. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290252" data-keyId="6172691157aad248885290252" data-type="1" id="6172691157aad248885290252"
+                               disabled name="keyChk_questions_6172691157aad24888529025_" data-name="key2"/>
+                        <label class="theme-skin" for="6172691157aad248885290252">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">B. </span>制作控制图核实产品的质量表现 Make control charts to verify the quality of the product </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select c. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290253" data-keyId="6172691157aad248885290253" data-type="1" id="6172691157aad248885290253"
+                               disabled name="keyChk_questions_6172691157aad24888529025_" data-name="key3"/>
+                        <label class="theme-skin" for="6172691157aad248885290253">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">C. </span>如果该供应商未达到质量要求，则准备好变更请求 Prepare a change request sf the vendor does not meet the quality requirements </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select d. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290254" data-keyId="6172691157aad248885290254" data-type="1" id="6172691157aad248885290254"
+                               disabled name="keyChk_questions_6172691157aad24888529025_" data-name="key4"/>
+                        <label class="theme-skin" for="6172691157aad248885290254">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">D. </span>编制一份包含所有合同要求的检查单 Prepare a checklist containing all contractual requirements </span>
+                        </label>
+                    </div>
+                
+
+    </div>
+
+
+    <div class="analysis">
+        
+            <div class="result-container">
+                <i class="icon icon-m_exam_parsing error"></i>答错了
+            </div>
+            <div class="operation-container">
+                <span class="item collect"><i class="icon icon-m_exam_collection"></i>收藏</span>
+                
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员得分：</div>
+                <div class="analysis-content question-com-answer">0.0（本题分数：1.0）
+                </div>
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员答案：</div>
+                <div class="analysis-content question-com-answer error"></div>
+            </div>
+        
+            <div class="analysis-row ">
+                <div class="analysis-title">正确答案：</div>
+                <div class="analysis-content question-ans-right">D</div>
+                <div class="analysis-content question-ans-right hidden">D</div>
+            </div>
+            <div class="analysis-row">
+                <div class="analysis-title">解释说明：</div>
+                <div class="analysis-content question-analysis textalign-justify display-block">PMBOK P498 12.3.2.4 控制采购，工具技术，检查：对承包商正在执行的工作进行结构化审查。关键词“供应商”可知在采购管理阶段，“收到设备”表示采购已执行，在控制过程组。干扰项B，质量管理应由供应商自身的乙方人员进行管理；</div>
+            </div>
+        
+    </div>
+
+                    <div class="question-operation operation-icon " data-type="1"
+                         data-toggle="tooltip" data-placement="top" data-container="body" title="">
+                        <i class="icon "></i>
+                    </div>
+                
+
+                                </div>
+                            
+                                <div class="question-content question-content-type-1" id="6172691157aad24888529026" data-id="6172691157aad24888529026"
+                                     data-commit="false" data-disorder="1">
+                                        
+
+
+
+<div class="exam-question">
+    <span class="question-index ellipsis theme-skin">21.</span>
+    
+    <span class="question-name">  项目团队确定他们需要采购的材料规格、数量和所需的质量等级。接下来应该完成哪一项？
+The project team determined the specifications, quantities and required quality levels of the materials we needed to procure . Which one should be done next?
+ </span>
+</div>
+
+
+    <div class="answers">
+        
+                    <div class="select single-select a. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290261" data-keyId="6172691157aad248885290261" data-type="1" id="6172691157aad248885290261"
+                               disabled name="keyChk_questions_6172691157aad24888529026_" data-name="key1"/>
+                        <label class="theme-skin" for="6172691157aad248885290261">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">A. </span>采购管理计划 The procurement management plan </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select b. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290262" data-keyId="6172691157aad248885290262" data-type="1" id="6172691157aad248885290262"
+                               disabled name="keyChk_questions_6172691157aad24888529026_" data-name="key2"/>
+                        <label class="theme-skin" for="6172691157aad248885290262">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">B. </span>采购工作说明书（SOW） The procurement Statement of Work (SOW) </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select c. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290263" data-keyId="6172691157aad248885290263" data-type="1" id="6172691157aad248885290263"
+                               disabled name="keyChk_questions_6172691157aad24888529026_" data-name="key3"/>
+                        <label class="theme-skin" for="6172691157aad248885290263">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">C. </span>供方选择标准 The source selection criteria </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select d. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290264" data-keyId="6172691157aad248885290264" data-type="1" id="6172691157aad248885290264"
+                               disabled name="keyChk_questions_6172691157aad24888529026_" data-name="key4"/>
+                        <label class="theme-skin" for="6172691157aad248885290264">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">D. </span>需求文件 The requirements Documentation </span>
+                        </label>
+                    </div>
+                
+
+    </div>
+
+
+    <div class="analysis">
+        
+            <div class="result-container">
+                <i class="icon icon-m_exam_parsing error"></i>答错了
+            </div>
+            <div class="operation-container">
+                <span class="item collect"><i class="icon icon-m_exam_collection"></i>收藏</span>
+                
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员得分：</div>
+                <div class="analysis-content question-com-answer">0.0（本题分数：1.0）
+                </div>
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员答案：</div>
+                <div class="analysis-content question-com-answer error"></div>
+            </div>
+        
+            <div class="analysis-row ">
+                <div class="analysis-title">正确答案：</div>
+                <div class="analysis-content question-ans-right">B</div>
+                <div class="analysis-content question-ans-right hidden">B</div>
+            </div>
+            <div class="analysis-row">
+                <div class="analysis-title">解释说明：</div>
+                <div class="analysis-content question-analysis textalign-justify display-block">PMBOK（6）P477，12.1.3.4-采购工作说明书。工作说明书会充分详细地描述拟采购的产品、服务或成果，以便潜在卖方确定是否有能力提供此类产品、服务或成果。选项A，采购管理计划记录了采购过程中的各项活动。选项C，供方选择标准是对潜在供应商的评判标准。选项D，需求文件是对收集到的需求的汇总。</div>
+            </div>
+        
+    </div>
+
+                    <div class="question-operation operation-icon " data-type="1"
+                         data-toggle="tooltip" data-placement="top" data-container="body" title="">
+                        <i class="icon "></i>
+                    </div>
+                
+
+                                </div>
+                            
+                                <div class="question-content question-content-type-1" id="6172691157aad2488852903a" data-id="6172691157aad2488852903a"
+                                     data-commit="false" data-disorder="1">
+                                        
+
+
+
+<div class="exam-question">
+    <span class="question-index ellipsis theme-skin">22.</span>
+    
+    <span class="question-name">  在正式结束项目之前，项目经理审查了所有相关项目文件，并根据合同向第三方供应商支付现金。供应商未能接受付款，而是请求更多资金。项目经理下一步应该做什么？
+Prior to the formal conclusion of the project, the project manager reviews all relevant project documents and pays cash to third-party vendors under the contract. The vendor failed to accept the payment and instead requested more funds. What should the project manager do next?
+ </span>
+</div>
+
+
+    <div class="answers">
+        
+                    <div class="select single-select a. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad2488852903a1" data-keyId="6172691157aad2488852903a1" data-type="1" id="6172691157aad2488852903a1"
+                               disabled name="keyChk_questions_6172691157aad2488852903a_" data-name="key1"/>
+                        <label class="theme-skin" for="6172691157aad2488852903a1">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">A. </span>将风险添加到风险登记册中并联系供应商 Add risk to the risk register and contact the vendor </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select b. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad2488852903a2" data-keyId="6172691157aad2488852903a2" data-type="1" id="6172691157aad2488852903a2"
+                               disabled name="keyChk_questions_6172691157aad2488852903a_" data-name="key2"/>
+                        <label class="theme-skin" for="6172691157aad2488852903a2">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">B. </span>遵循变更控制程序来变更供应商 Follow change control procedures to change vendors </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select c. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad2488852903a3" data-keyId="6172691157aad2488852903a3" data-type="1" id="6172691157aad2488852903a3"
+                               disabled name="keyChk_questions_6172691157aad2488852903a_" data-name="key3"/>
+                        <label class="theme-skin" for="6172691157aad2488852903a3">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">C. </span>将供应商的请求升级上报给项目发起人 Report the vendor’s request for upgrade to the project sponsor </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select d. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad2488852903a4" data-keyId="6172691157aad2488852903a4" data-type="1" id="6172691157aad2488852903a4"
+                               disabled name="keyChk_questions_6172691157aad2488852903a_" data-name="key4"/>
+                        <label class="theme-skin" for="6172691157aad2488852903a4">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">D. </span>让采购团队参与解决供应商请求 Escalate the vendor's total upgrade to the project sponsor </span>
+                        </label>
+                    </div>
+                
+
+    </div>
+
+
+    <div class="analysis">
+        
+            <div class="result-container">
+                <i class="icon icon-m_exam_parsing error"></i>答错了
+            </div>
+            <div class="operation-container">
+                <span class="item collect"><i class="icon icon-m_exam_collection"></i>收藏</span>
+                
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员得分：</div>
+                <div class="analysis-content question-com-answer">0.0（本题分数：1.0）
+                </div>
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员答案：</div>
+                <div class="analysis-content question-com-answer error"></div>
+            </div>
+        
+            <div class="analysis-row ">
+                <div class="analysis-title">正确答案：</div>
+                <div class="analysis-content question-ans-right">D</div>
+                <div class="analysis-content question-ans-right hidden">D</div>
+            </div>
+            <div class="analysis-row">
+                <div class="analysis-title">解释说明：</div>
+                <div class="analysis-content question-analysis textalign-justify display-block">PMBOK（6）498-12.3.2.2控制采购-索赔管理。谈判是解决所有索赔和争议的首选方法。选项A，问题已经发生，不是不确定性事件。选项B，还没提出替换供应商的建议。选项C，对供应商的管理是项目经理的责任，不能将问题推给项目发起人。</div>
+            </div>
+        
+    </div>
+
+                    <div class="question-operation operation-icon " data-type="1"
+                         data-toggle="tooltip" data-placement="top" data-container="body" title="">
+                        <i class="icon "></i>
+                    </div>
+                
+
+                                </div>
+                            
+                                <div class="question-content question-content-type-1" id="6172691157aad24888529023" data-id="6172691157aad24888529023"
+                                     data-commit="false" data-disorder="1">
+                                        
+
+
+
+<div class="exam-question">
+    <span class="question-index ellipsis theme-skin">23.</span>
+    
+    <span class="question-name">  一家公司决定启动一个战略性项目，这项目将提供有竞争力的技术进步，该项目需要某 个特定性技术的专家，但组织无法提供准确的工作说明书（SOW)。 应该使用什么类型的合同？
+A company decides to start a strategic project that will provide competitive technological advancement. The project requires experts in a specific technology, but the organization cannot provide an accurate statement of work (SOW). What type of contract should be used?
+ </span>
+</div>
+
+
+    <div class="answers">
+        
+                    <div class="select single-select a. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290231" data-keyId="6172691157aad248885290231" data-type="1" id="6172691157aad248885290231"
+                               disabled name="keyChk_questions_6172691157aad24888529023_" data-name="key1"/>
+                        <label class="theme-skin" for="6172691157aad248885290231">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">A. </span>工料合同(T&amp;M) Time and Material (T&amp;M) Contract </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select b. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290232" data-keyId="6172691157aad248885290232" data-type="1" id="6172691157aad248885290232"
+                               disabled name="keyChk_questions_6172691157aad24888529023_" data-name="key2"/>
+                        <label class="theme-skin" for="6172691157aad248885290232">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">B. </span>固定总价合同（FFP） Firm Fixed Price (FFP) Contract </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select c. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290233" data-keyId="6172691157aad248885290233" data-type="1" id="6172691157aad248885290233"
+                               disabled name="keyChk_questions_6172691157aad24888529023_" data-name="key3"/>
+                        <label class="theme-skin" for="6172691157aad248885290233">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">C. </span>成本加固定费用合同 Cost plus Fixed Fee Contract </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select d. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290234" data-keyId="6172691157aad248885290234" data-type="1" id="6172691157aad248885290234"
+                               disabled name="keyChk_questions_6172691157aad24888529023_" data-name="key4"/>
+                        <label class="theme-skin" for="6172691157aad248885290234">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">D. </span>成本加激励费用合同 Cost plus Incentive Fee Contract </span>
+                        </label>
+                    </div>
+                
+
+    </div>
+
+
+    <div class="analysis">
+        
+            <div class="result-container">
+                <i class="icon icon-m_exam_parsing error"></i>答错了
+            </div>
+            <div class="operation-container">
+                <span class="item collect"><i class="icon icon-m_exam_collection"></i>收藏</span>
+                
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员得分：</div>
+                <div class="analysis-content question-com-answer">0.0（本题分数：1.0）
+                </div>
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员答案：</div>
+                <div class="analysis-content question-com-answer error"></div>
+            </div>
+        
+            <div class="analysis-row ">
+                <div class="analysis-title">正确答案：</div>
+                <div class="analysis-content question-ans-right">A</div>
+                <div class="analysis-content question-ans-right hidden">A</div>
+            </div>
+            <div class="analysis-row">
+                <div class="analysis-title">解释说明：</div>
+                <div class="analysis-content question-analysis textalign-justify display-block">PMBOK P472 工料合同定义：无法快速编制出准确的工作说明书，往往使用于聘用专家或外部资源。关键词“需要某 个特定性技术的专家，但组织无法提供准确的工作说明书”；选项A正确。</div>
+            </div>
+        
+    </div>
+
+                    <div class="question-operation operation-icon " data-type="1"
+                         data-toggle="tooltip" data-placement="top" data-container="body" title="">
+                        <i class="icon "></i>
+                    </div>
+                
+
+                                </div>
+                            
+                                <div class="question-content question-content-type-1" id="6172691157aad24888529024" data-id="6172691157aad24888529024"
+                                     data-commit="false" data-disorder="1">
+                                        
+
+
+
+<div class="exam-question">
+    <span class="question-index ellipsis theme-skin">24.</span>
+    
+    <span class="question-name">  某组织希望为其网站门户中某—版块采用一种新的理念，CEO指定了项目经理，并希望立刻选定供应商。项目经理首先应该做什么？
+An organization that wanted to adopt a new concept for a section of its web portal, the Chief Executive Officer designated a project manager and wanted to pick a vendor immediately. What should the project manager do first?
+ </span>
+</div>
+
+
+    <div class="answers">
+        
+                    <div class="select single-select a. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290241" data-keyId="6172691157aad248885290241" data-type="1" id="6172691157aad248885290241"
+                               disabled name="keyChk_questions_6172691157aad24888529024_" data-name="key1"/>
+                        <label class="theme-skin" for="6172691157aad248885290241">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">A. </span>了解供应商的期望 Understand vendor expectations </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select b. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290242" data-keyId="6172691157aad248885290242" data-type="1" id="6172691157aad248885290242"
+                               disabled name="keyChk_questions_6172691157aad24888529024_" data-name="key2"/>
+                        <label class="theme-skin" for="6172691157aad248885290242">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">B. </span>为供应商设定资源选择原则 Set resource selection principles for vendors </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select c. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290243" data-keyId="6172691157aad248885290243" data-type="1" id="6172691157aad248885290243"
+                               disabled name="keyChk_questions_6172691157aad24888529024_" data-name="key3"/>
+                        <label class="theme-skin" for="6172691157aad248885290243">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">C. </span>根据组织过程资产创建一份供应商清单 Create a list of vendors based on the organizational process assets </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select d. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290244" data-keyId="6172691157aad248885290244" data-type="1" id="6172691157aad248885290244"
+                               disabled name="keyChk_questions_6172691157aad24888529024_" data-name="key4"/>
+                        <label class="theme-skin" for="6172691157aad248885290244">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">D. </span>为供应商制定行业标杆 Set industry baselines for vendors </span>
+                        </label>
+                    </div>
+                
+
+    </div>
+
+
+    <div class="analysis">
+        
+            <div class="result-container">
+                <i class="icon icon-m_exam_parsing error"></i>答错了
+            </div>
+            <div class="operation-container">
+                <span class="item collect"><i class="icon icon-m_exam_collection"></i>收藏</span>
+                
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员得分：</div>
+                <div class="analysis-content question-com-answer">0.0（本题分数：1.0）
+                </div>
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员答案：</div>
+                <div class="analysis-content question-com-answer error"></div>
+            </div>
+        
+            <div class="analysis-row ">
+                <div class="analysis-title">正确答案：</div>
+                <div class="analysis-content question-ans-right">B</div>
+                <div class="analysis-content question-ans-right hidden">B</div>
+            </div>
+            <div class="analysis-row">
+                <div class="analysis-title">解释说明：</div>
+                <div class="analysis-content question-analysis textalign-justify display-block">PMBOK P478 12.1.3.5 规划采购管理，输出，供方选择标准。关键词“采用新理念，选定供应商”意味着这种新理念是选择供应商的关键标准，B选项合适；</div>
+            </div>
+        
+    </div>
+
+                    <div class="question-operation operation-icon " data-type="1"
+                         data-toggle="tooltip" data-placement="top" data-container="body" title="">
+                        <i class="icon "></i>
+                    </div>
+                
+
+                                </div>
+                            
+                                <div class="question-content question-content-type-1" id="6172691157aad24888529022" data-id="6172691157aad24888529022"
+                                     data-commit="false" data-disorder="1">
+                                        
+
+
+
+<div class="exam-question">
+    <span class="question-index ellipsis theme-skin">25.</span>
+    
+    <span class="question-name">  由于项目范围发生变化，签约了一家新的供应商。该供应商曾有不按时交付的记录，这令项目经理十分担心。项目经理应该做什么？
+Due to a change in project scope, a new vendor is contracted . This vendor has a record of making untimely deliveries, which concerns the project manager .  What should the project manager do?
+ </span>
+</div>
+
+
+    <div class="answers">
+        
+                    <div class="select single-select a. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290221" data-keyId="6172691157aad248885290221" data-type="1" id="6172691157aad248885290221"
+                               disabled name="keyChk_questions_6172691157aad24888529022_" data-name="key1"/>
+                        <label class="theme-skin" for="6172691157aad248885290221">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">A. </span>立即终止与该供应商的合同。 Immediately terminate the contract with the vendor </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select b. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290222" data-keyId="6172691157aad248885290222" data-type="1" id="6172691157aad248885290222"
+                               disabled name="keyChk_questions_6172691157aad24888529022_" data-name="key2"/>
+                        <label class="theme-skin" for="6172691157aad248885290222">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">B. </span>要求采购人员密切监督该供应商。 Request the procurement staff to closely monitor the vendor </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select c. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290223" data-keyId="6172691157aad248885290223" data-type="1" id="6172691157aad248885290223"
+                               disabled name="keyChk_questions_6172691157aad24888529022_" data-name="key3"/>
+                        <label class="theme-skin" for="6172691157aad248885290223">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">C. </span>提出一个随机的供应商检查来验证他们的记录。 Initiate a random vendor inspection to verify its record </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select d. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290224" data-keyId="6172691157aad248885290224" data-type="1" id="6172691157aad248885290224"
+                               disabled name="keyChk_questions_6172691157aad24888529022_" data-name="key4"/>
+                        <label class="theme-skin" for="6172691157aad248885290224">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">D. </span>与该供应商一起审查工作说明书（SOW）。 Review the statement of work (SOW) with the vendor </span>
+                        </label>
+                    </div>
+                
+
+    </div>
+
+
+    <div class="analysis">
+        
+            <div class="result-container">
+                <i class="icon icon-m_exam_parsing error"></i>答错了
+            </div>
+            <div class="operation-container">
+                <span class="item collect"><i class="icon icon-m_exam_collection"></i>收藏</span>
+                
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员得分：</div>
+                <div class="analysis-content question-com-answer">0.0（本题分数：1.0）
+                </div>
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员答案：</div>
+                <div class="analysis-content question-com-answer error"></div>
+            </div>
+        
+            <div class="analysis-row ">
+                <div class="analysis-title">正确答案：</div>
+                <div class="analysis-content question-ans-right">B</div>
+                <div class="analysis-content question-ans-right hidden">B</div>
+            </div>
+            <div class="analysis-row">
+                <div class="analysis-title">解释说明：</div>
+                <div class="analysis-content question-analysis textalign-justify display-block">PMBOK P492, 12.3 控制采购定义: 确保买卖双方履行法律协议，满足项目需求。题目关键词"签约供应商，不按时交货记录，项目经理担忧"，表明合同已签署，实施采购已完成，PM需要确保交付工作顺利进行，故选控制采购B。还未发生问题，不能终止合同和一起审查SOW，排除AD。审计供应商的方式应该由合同约束，C的检查方式不合适，排除。</div>
+            </div>
+        
+    </div>
+
+                    <div class="question-operation operation-icon " data-type="1"
+                         data-toggle="tooltip" data-placement="top" data-container="body" title="">
+                        <i class="icon "></i>
+                    </div>
+                
+
+                                </div>
+                            
+                                <div class="question-content question-content-type-1" id="6172691157aad24888529029" data-id="6172691157aad24888529029"
+                                     data-commit="false" data-disorder="1">
+                                        
+
+
+
+<div class="exam-question">
+    <span class="question-index ellipsis theme-skin">26.</span>
+    
+    <span class="question-name">  项目的混凝土准时到达，但项目经理发现混凝土的成分不正确。项目经理应审查哪一份文件来确认混凝土的性能和质量要求？
+The concrete for a project arrives on time, but the project manager discovers that the concrete’s composition is incorrect. What document should the project manager review to verity the concrete’s performance and quality requirements?
+ </span>
+</div>
+
+
+    <div class="answers">
+        
+                    <div class="select single-select a. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290291" data-keyId="6172691157aad248885290291" data-type="1" id="6172691157aad248885290291"
+                               disabled name="keyChk_questions_6172691157aad24888529029_" data-name="key1"/>
+                        <label class="theme-skin" for="6172691157aad248885290291">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">A. </span>质量管理计划 The Quality management plan </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select b. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290292" data-keyId="6172691157aad248885290292" data-type="1" id="6172691157aad248885290292"
+                               disabled name="keyChk_questions_6172691157aad24888529029_" data-name="key2"/>
+                        <label class="theme-skin" for="6172691157aad248885290292">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">B. </span>采购管理计划 The procurement management plan </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select c. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290293" data-keyId="6172691157aad248885290293" data-type="1" id="6172691157aad248885290293"
+                               disabled name="keyChk_questions_6172691157aad24888529029_" data-name="key3"/>
+                        <label class="theme-skin" for="6172691157aad248885290293">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">C. </span>建议邀请书 The request for proposal </span>
+                        </label>
+                    </div>
+                
+                    <div class="select single-select d. ">
+                        <input type="radio" class="radioOrCheck hidden 6172691157aad248885290294" data-keyId="6172691157aad248885290294" data-type="1" id="6172691157aad248885290294"
+                               disabled name="keyChk_questions_6172691157aad24888529029_" data-name="key4"/>
+                        <label class="theme-skin" for="6172691157aad248885290294">
+                            <span class="select-icon"><i class="icon icon-m_exam_correct"></i></span>
+                            <span class="words"><span class="words-option">D. </span>采购工作说明书(SOW) The procurement statement of work (SOW) </span>
+                        </label>
+                    </div>
+                
+
+    </div>
+
+
+    <div class="analysis">
+        
+            <div class="result-container">
+                <i class="icon icon-m_exam_parsing error"></i>答错了
+            </div>
+            <div class="operation-container">
+                <span class="item collect"><i class="icon icon-m_exam_collection"></i>收藏</span>
+                
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员得分：</div>
+                <div class="analysis-content question-com-answer">0.0（本题分数：1.0）
+                </div>
+            </div>
+        
+            <div class="analysis-row">
+                <div class="analysis-title">学员答案：</div>
+                <div class="analysis-content question-com-answer error"></div>
+            </div>
+        
+            <div class="analysis-row ">
+                <div class="analysis-title">正确答案：</div>
+                <div class="analysis-content question-ans-right">D</div>
+                <div class="analysis-content question-ans-right hidden">D</div>
+            </div>
+            <div class="analysis-row">
+                <div class="analysis-title">解释说明：</div>
+                <div class="analysis-content question-analysis textalign-justify display-block">PMBOK P477 12.1.3.4 规划采购管理，输出，采购工作说明书，内容包括：规格、质量水平…关键词“成分不正确，确认性能和质量要求”，D选项正确；</div>
+            </div>
+        
+    </div>
+
+                    <div class="question-operation operation-icon " data-type="1"
+                         data-toggle="tooltip" data-placement="top" data-container="body" title="">
+                        <i class="icon "></i>
+                    </div>
+                
+
+                                </div>
+                            
+            </div>
+        </div>
+    
+            </div>
+
+                
+        </div>
+
+        <div class="nav-wrapper">
+            
+            <div class="nav nav-status nav-operation">
+                <ul class="menu-items">
+                    <li class="menu-item menu-item-exam menu-item-score ">
+                        <div class="item-label">考试成绩</div>
+                        <div class="item-data">0.0</div>
+                    </li>
+                    <li class="menu-item menu-item-exam menu-item-status ">
+                        <div class="item-label">考试状态</div>
+                        <div class="item-data">未通过</div>
+                    </li>
+                    <li>
+                        <div class="form-group filterOnly">
+                            <label class="col-sm-3 control-label letter-7">筛选试题</label>
+                            <div class="col-sm-9 current_filter">
+                                <span class="filter_text">全部</span><div class="icon-a_arrow_down"></div>
+                            </div>
+                            <div class="filter_opts">
+                                <div class="filter_opt active" filter="all">
+                                    <span>全部</span><div class="icon-a_check"></div>
+                                </div>
+                                <div class="filter_opt" filter="right">
+                                    <span>答对</span><div class="icon-a_check"></div>
+                                </div>
+                                <div class="filter_opt" filter="error">
+                                    <span>答错</span><div class="icon-a_check"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+                
+            <!--
+            
+            -->
+            <a href="#" onclick="backToExamScore()" class="btn btn-primary btn-nav">返回</a>
+        </div>
+
+    </div><div class="left-side">
+        
+        <div class="numberCardModal" id="numberCardModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-number-card" role="document">
+                <div class="fold_btn" id="answercardFoldBtn"><i class="icon icons8-icon"  data-toggle="tooltip" data-placement="top" data-container="body" title="" data-original-title="收起"></i></div>
+                <div class="open_btn" id="answercardOpenBtn"><i class="icon icons8-icon-3"  data-toggle="tooltip" data-placement="top" data-container="body" title="" data-original-title="展开"></i></div>
+                <div class="modal-content">
+                    <div class="modal-header">
+                    </div>
+                    <div class="modal-body">
+                        <div class="title">
+                            <div class="title_border"></div>
+                            <div class="title_content">答题卡</div>
+                        </div>
+
+                        <div class="card-content-list">
+                            
+                                    <div class="card-content">
+                                        
+                                                <div class="card-content-title">单选题</div>
+                                            
+
+                                        <div class="box-list">
+                                            
+                                                            <a href="#6172691157aad2488852902f">
+                                                                <div class="box normal-box s4">
+                                                        <span class="iconBox currentThemeBackgroundColor questions_6172691157aad2488852902f"
+                                                              questionsId="6172691157aad2488852902f">1</span>
+                                                                        
+                                                                    <span class="icon-box question_marked icon-p_exam_tag_se"></span>
+                                                                    <span class="icon-box question_collected icon-m_exam_collection_se"></span>
+                                                                </div>
+                                                            </a>
+                                                        
+                                                            <a href="#6172691157aad2488852902e">
+                                                                <div class="box normal-box s4">
+                                                        <span class="iconBox currentThemeBackgroundColor questions_6172691157aad2488852902e"
+                                                              questionsId="6172691157aad2488852902e">2</span>
+                                                                        
+                                                                    <span class="icon-box question_marked icon-p_exam_tag_se"></span>
+                                                                    <span class="icon-box question_collected icon-m_exam_collection_se"></span>
+                                                                </div>
+                                                            </a>
+                                                        
+                                                            <a href="#6172691157aad2488852902b">
+                                                                <div class="box normal-box s4">
+                                                        <span class="iconBox currentThemeBackgroundColor questions_6172691157aad2488852902b"
+                                                              questionsId="6172691157aad2488852902b">3</span>
+                                                                        
+                                                                    <span class="icon-box question_marked icon-p_exam_tag_se"></span>
+                                                                    <span class="icon-box question_collected icon-m_exam_collection_se"></span>
+                                                                </div>
+                                                            </a>
+                                                        
+                                                            <a href="#6172691157aad2488852902a">
+                                                                <div class="box normal-box s4">
+                                                        <span class="iconBox currentThemeBackgroundColor questions_6172691157aad2488852902a"
+                                                              questionsId="6172691157aad2488852902a">4</span>
+                                                                        
+                                                                    <span class="icon-box question_marked icon-p_exam_tag_se"></span>
+                                                                    <span class="icon-box question_collected icon-m_exam_collection_se"></span>
+                                                                </div>
+                                                            </a>
+                                                        
+                                                            <a href="#6172691157aad2488852902d">
+                                                                <div class="box normal-box s4">
+                                                        <span class="iconBox currentThemeBackgroundColor questions_6172691157aad2488852902d"
+                                                              questionsId="6172691157aad2488852902d">5</span>
+                                                                        
+                                                                    <span class="icon-box question_marked icon-p_exam_tag_se"></span>
+                                                                    <span class="icon-box question_collected icon-m_exam_collection_se"></span>
+                                                                </div>
+                                                            </a>
+                                                        
+                                                            <a href="#6172691157aad2488852902c">
+                                                                <div class="box normal-box s4">
+                                                        <span class="iconBox currentThemeBackgroundColor questions_6172691157aad2488852902c"
+                                                              questionsId="6172691157aad2488852902c">6</span>
+                                                                        
+                                                                    <span class="icon-box question_marked icon-p_exam_tag_se"></span>
+                                                                    <span class="icon-box question_collected icon-m_exam_collection_se"></span>
+                                                                </div>
+                                                            </a>
+                                                        
+                                                            <a href="#6172691157aad24888529036">
+                                                                <div class="box normal-box s4">
+                                                        <span class="iconBox currentThemeBackgroundColor questions_6172691157aad24888529036"
+                                                              questionsId="6172691157aad24888529036">7</span>
+                                                                        
+                                                                    <span class="icon-box question_marked icon-p_exam_tag_se"></span>
+                                                                    <span class="icon-box question_collected icon-m_exam_collection_se"></span>
+                                                                </div>
+                                                            </a>
+                                                        
+                                                            <a href="#6172691157aad24888529037">
+                                                                <div class="box normal-box s4">
+                                                        <span class="iconBox currentThemeBackgroundColor questions_6172691157aad24888529037"
+                                                              questionsId="6172691157aad24888529037">8</span>
+                                                                        
+                                                                    <span class="icon-box question_marked icon-p_exam_tag_se"></span>
+                                                                    <span class="icon-box question_collected icon-m_exam_collection_se"></span>
+                                                                </div>
+                                                            </a>
+                                                        
+                                                            <a href="#6172691157aad24888529038">
+                                                                <div class="box normal-box s4">
+                                                        <span class="iconBox currentThemeBackgroundColor questions_6172691157aad24888529038"
+                                                              questionsId="6172691157aad24888529038">9</span>
+                                                                        
+                                                                    <span class="icon-box question_marked icon-p_exam_tag_se"></span>
+                                                                    <span class="icon-box question_collected icon-m_exam_collection_se"></span>
+                                                                </div>
+                                                            </a>
+                                                        
+                                                            <a href="#6172691157aad24888529039">
+                                                                <div class="box normal-box s4">
+                                                        <span class="iconBox currentThemeBackgroundColor questions_6172691157aad24888529039"
+                                                              questionsId="6172691157aad24888529039">10</span>
+                                                                        
+                                                                    <span class="icon-box question_marked icon-p_exam_tag_se"></span>
+                                                                    <span class="icon-box question_collected icon-m_exam_collection_se"></span>
+                                                                </div>
+                                                            </a>
+                                                        
+                                                            <a href="#6172691157aad24888529032">
+                                                                <div class="box normal-box s4">
+                                                        <span class="iconBox currentThemeBackgroundColor questions_6172691157aad24888529032"
+                                                              questionsId="6172691157aad24888529032">11</span>
+                                                                        
+                                                                    <span class="icon-box question_marked icon-p_exam_tag_se"></span>
+                                                                    <span class="icon-box question_collected icon-m_exam_collection_se"></span>
+                                                                </div>
+                                                            </a>
+                                                        
+                                                            <a href="#6172691157aad24888529033">
+                                                                <div class="box normal-box s4">
+                                                        <span class="iconBox currentThemeBackgroundColor questions_6172691157aad24888529033"
+                                                              questionsId="6172691157aad24888529033">12</span>
+                                                                        
+                                                                    <span class="icon-box question_marked icon-p_exam_tag_se"></span>
+                                                                    <span class="icon-box question_collected icon-m_exam_collection_se"></span>
+                                                                </div>
+                                                            </a>
+                                                        
+                                                            <a href="#6172691157aad24888529034">
+                                                                <div class="box normal-box s4">
+                                                        <span class="iconBox currentThemeBackgroundColor questions_6172691157aad24888529034"
+                                                              questionsId="6172691157aad24888529034">13</span>
+                                                                        
+                                                                    <span class="icon-box question_marked icon-p_exam_tag_se"></span>
+                                                                    <span class="icon-box question_collected icon-m_exam_collection_se"></span>
+                                                                </div>
+                                                            </a>
+                                                        
+                                                            <a href="#6172691157aad24888529035">
+                                                                <div class="box normal-box s4">
+                                                        <span class="iconBox currentThemeBackgroundColor questions_6172691157aad24888529035"
+                                                              questionsId="6172691157aad24888529035">14</span>
+                                                                        
+                                                                    <span class="icon-box question_marked icon-p_exam_tag_se"></span>
+                                                                    <span class="icon-box question_collected icon-m_exam_collection_se"></span>
+                                                                </div>
+                                                            </a>
+                                                        
+                                                            <a href="#6172691157aad24888529031">
+                                                                <div class="box normal-box s4">
+                                                        <span class="iconBox currentThemeBackgroundColor questions_6172691157aad24888529031"
+                                                              questionsId="6172691157aad24888529031">15</span>
+                                                                        
+                                                                    <span class="icon-box question_marked icon-p_exam_tag_se"></span>
+                                                                    <span class="icon-box question_collected icon-m_exam_collection_se"></span>
+                                                                </div>
+                                                            </a>
+                                                        
+                                                            <a href="#6172691157aad24888529030">
+                                                                <div class="box normal-box s4">
+                                                        <span class="iconBox currentThemeBackgroundColor questions_6172691157aad24888529030"
+                                                              questionsId="6172691157aad24888529030">16</span>
+                                                                        
+                                                                    <span class="icon-box question_marked icon-p_exam_tag_se"></span>
+                                                                    <span class="icon-box question_collected icon-m_exam_collection_se"></span>
+                                                                </div>
+                                                            </a>
+                                                        
+                                                            <a href="#6172691157aad2488852903b">
+                                                                <div class="box normal-box s4">
+                                                        <span class="iconBox currentThemeBackgroundColor questions_6172691157aad2488852903b"
+                                                              questionsId="6172691157aad2488852903b">17</span>
+                                                                        
+                                                                    <span class="icon-box question_marked icon-p_exam_tag_se"></span>
+                                                                    <span class="icon-box question_collected icon-m_exam_collection_se"></span>
+                                                                </div>
+                                                            </a>
+                                                        
+                                                            <a href="#6172691157aad24888529027">
+                                                                <div class="box normal-box s4">
+                                                        <span class="iconBox currentThemeBackgroundColor questions_6172691157aad24888529027"
+                                                              questionsId="6172691157aad24888529027">18</span>
+                                                                        
+                                                                    <span class="icon-box question_marked icon-p_exam_tag_se"></span>
+                                                                    <span class="icon-box question_collected icon-m_exam_collection_se"></span>
+                                                                </div>
+                                                            </a>
+                                                        
+                                                            <a href="#6172691157aad24888529028">
+                                                                <div class="box normal-box s4">
+                                                        <span class="iconBox currentThemeBackgroundColor questions_6172691157aad24888529028"
+                                                              questionsId="6172691157aad24888529028">19</span>
+                                                                        
+                                                                    <span class="icon-box question_marked icon-p_exam_tag_se"></span>
+                                                                    <span class="icon-box question_collected icon-m_exam_collection_se"></span>
+                                                                </div>
+                                                            </a>
+                                                        
+                                                            <a href="#6172691157aad24888529025">
+                                                                <div class="box normal-box s4">
+                                                        <span class="iconBox currentThemeBackgroundColor questions_6172691157aad24888529025"
+                                                              questionsId="6172691157aad24888529025">20</span>
+                                                                        
+                                                                    <span class="icon-box question_marked icon-p_exam_tag_se"></span>
+                                                                    <span class="icon-box question_collected icon-m_exam_collection_se"></span>
+                                                                </div>
+                                                            </a>
+                                                        
+                                                            <a href="#6172691157aad24888529026">
+                                                                <div class="box normal-box s4">
+                                                        <span class="iconBox currentThemeBackgroundColor questions_6172691157aad24888529026"
+                                                              questionsId="6172691157aad24888529026">21</span>
+                                                                        
+                                                                    <span class="icon-box question_marked icon-p_exam_tag_se"></span>
+                                                                    <span class="icon-box question_collected icon-m_exam_collection_se"></span>
+                                                                </div>
+                                                            </a>
+                                                        
+                                                            <a href="#6172691157aad2488852903a">
+                                                                <div class="box normal-box s4">
+                                                        <span class="iconBox currentThemeBackgroundColor questions_6172691157aad2488852903a"
+                                                              questionsId="6172691157aad2488852903a">22</span>
+                                                                        
+                                                                    <span class="icon-box question_marked icon-p_exam_tag_se"></span>
+                                                                    <span class="icon-box question_collected icon-m_exam_collection_se"></span>
+                                                                </div>
+                                                            </a>
+                                                        
+                                                            <a href="#6172691157aad24888529023">
+                                                                <div class="box normal-box s4">
+                                                        <span class="iconBox currentThemeBackgroundColor questions_6172691157aad24888529023"
+                                                              questionsId="6172691157aad24888529023">23</span>
+                                                                        
+                                                                    <span class="icon-box question_marked icon-p_exam_tag_se"></span>
+                                                                    <span class="icon-box question_collected icon-m_exam_collection_se"></span>
+                                                                </div>
+                                                            </a>
+                                                        
+                                                            <a href="#6172691157aad24888529024">
+                                                                <div class="box normal-box s4">
+                                                        <span class="iconBox currentThemeBackgroundColor questions_6172691157aad24888529024"
+                                                              questionsId="6172691157aad24888529024">24</span>
+                                                                        
+                                                                    <span class="icon-box question_marked icon-p_exam_tag_se"></span>
+                                                                    <span class="icon-box question_collected icon-m_exam_collection_se"></span>
+                                                                </div>
+                                                            </a>
+                                                        
+                                                            <a href="#6172691157aad24888529022">
+                                                                <div class="box normal-box s4">
+                                                        <span class="iconBox currentThemeBackgroundColor questions_6172691157aad24888529022"
+                                                              questionsId="6172691157aad24888529022">25</span>
+                                                                        
+                                                                    <span class="icon-box question_marked icon-p_exam_tag_se"></span>
+                                                                    <span class="icon-box question_collected icon-m_exam_collection_se"></span>
+                                                                </div>
+                                                            </a>
+                                                        
+                                                            <a href="#6172691157aad24888529029">
+                                                                <div class="box normal-box s4">
+                                                        <span class="iconBox currentThemeBackgroundColor questions_6172691157aad24888529029"
+                                                              questionsId="6172691157aad24888529029">26</span>
+                                                                        
+                                                                    <span class="icon-box question_marked icon-p_exam_tag_se"></span>
+                                                                    <span class="icon-box question_collected icon-m_exam_collection_se"></span>
+                                                                </div>
+                                                            </a>
+                                                        
+                                        </div>
+                                        <div class="split"></div>
+                                    </div>
+                                
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <span class="box currentThemeBackgroundColor icon-box s2"></span>
+                        <span class="icon-label">正确</span>
+                        <span class="box icon-box s4"></span>
+                        <span class="icon-label">错误</span>
+                        <span class="box icon-box marked icon-p_exam_tag_se"></span>
+                        <span class="icon-label">标记</span>
+                        <span class="box icon-box collected icon-m_exam_collection_se"></span>
+                        <span class="icon-label">收藏</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+
+<div class="modal fade feedback-modal" id="feedbackModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">题目反馈</h4>
+            </div>
+            <div class="modal-body">
+                <label>
+                    反馈内容：<br>
+                    <textarea name="feedback" rows="5" placeholder="请提供详细描述，便于管理人员处理！（200字内）"></textarea>
+                </label>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default close" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary confirm">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-pc-message modal-logout" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-title">您是否要退出登录？</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-gray" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-danger" id="confirmLogoutBtn">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="https://s5.kaoshixing.com/static/base/js/jquery.min.js?v=8101d596b2"></script>
+<script type="text/javascript" src="https://s2.kaoshixing.com/static/plugins/jquery-ui.min.js?v=c15b1008de"></script>
+<script type="text/javascript" src="https://s0.kaoshixing.com/static/plugins/bootstrap/js/bootstrap.min.js?v=87d37353ad"></script>
+<script type="text/javascript" src="https://s5.kaoshixing.com/static/plugins/bootstrap-dialog.min.js?v=0330ca558b"></script>
+<script type="text/javascript" src="https://s0.kaoshixing.com/static/plugins/katex/katex.min.js?v=c158c9e823"></script>
+<script type="text/javascript" src="https://s1.kaoshixing.com/static/plugins/katex/contrib/auto-render.min.js?v=28cd0b98cd"></script>
+<script type="text/javascript" src="https://s1.kaoshixing.com/static/plugins/ksx-message/message.js?v=ace2881014"></script>
+<script type="text/javascript" src="https://s4.kaoshixing.com/static/plugins/clipboard/clipboard.min.js?v=3e5e0fa949"></script>
+<script type="text/javascript">
+    
+    var companyId = "698"; //公司id
+    var exam_info_id = "931290"; //考试ID
+    var exam_results_id = "54529799"; //考试关联ID
+
+    // 解析latex公式
+    renderFormula(".latex", false);
+
+</script>
+<script type="text/javascript" src="https://s1.kaoshixing.com/static/base/js/exam-base.js?v=e8da7e035c"></script>
+<script type="text/javascript" src="https://s0.kaoshixing.com/static/plugins/expanding.js?v=605318526f"></script>
+    <script type="text/javascript" src="https://s4.kaoshixing.com/static/plugins/stickUp/stickUp.min.js?v=125ba02417"></script>
+    <script type="text/javascript" src="https://s5.kaoshixing.com/static/exam/js/exam_check_results.js?v=5dcc0adf32"></script>
+    <script type="text/javascript" src="https://s1.kaoshixing.com/static/plugins/honeySwitch/honeySwitch.js?v=94e23bd13c"></script>
+
+
+    <script>
+        //是否显示水印 0--不显示；1--显示
+        var isWatermark = '0';
+        var resultId = "54529799";
+        function backToExamScore(){
+            window.location.href = "/exam/result/inquire?examResultsId=" + resultId;
+        }
+        // 流量是否超限
+        var flowOverLimit = '';
+    </script>
+</body>
+</html>
