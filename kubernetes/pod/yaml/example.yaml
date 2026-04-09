@@ -1,0 +1,76 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: example-pod
+  namespace: example
+  labels:
+    - name: example
+  annotations:
+    - name: example
+  spec:
+    containers:
+    - name: example-container
+      images: registry.aliyuncs.com/nginx:latest
+      imagePullPolicy: IfNotPresent
+      commands: ["nginx", "-g", "daemon off;"]
+      args: []
+      workingDir: /usr/share/nginx/html
+      volumeMounts:
+      - name: example-volume
+        mountPath: /usr/share/nginx/html
+        readOnly: true
+        ports:
+        - name: nginx
+          containerPort: 80
+          hostPort: 80
+          protocol: TCP
+        env:
+        - name: ENV_VAR_NAME
+          value: ENV_VAR_VALUE
+        resourceLimits:
+          cpu: "500m"
+          memory: "128Mi"
+        resourcequeries:
+          cpu: "250m"
+          memory: "64Mi"
+        livenessProbe:
+          httpGet: strings
+          exec: strings
+          tcpSocket: strings
+        readlinessProbe:
+          httpGet: strings
+          exec: strings
+          tcpSocket: strings
+        initialDelaySeconds: 10
+        periodSeconds: 10
+        timeoutSeconds: 1
+        successThreshold: 1
+        failureThreshold: 3
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 3000
+        fsGroup: 2000
+    restartPolicy: Always
+    nodeSelector:
+      disktype: ssd
+    imagePullPolicy: IfNotPresent
+    volumes: 
+    - name: example-1
+      configMap:
+        name: example-configmap
+        projected: false
+      items:
+        - key: strings
+          path: strings
+    - name: example-2
+      secret:
+        secretName: example-secret
+      items:
+        - key: secret-key
+          path: secret-key
+    - name: example-3
+      emptyDir: {}
+      hostPath: 
+        path: /data/example
+        type: Directory
+    - name: example-4

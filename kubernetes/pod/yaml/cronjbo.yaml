@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata: 
+  name: cronjob-example
+  labels:
+    app: "cronjobexample"
+spec:
+  schedule: "*/1 * * * *" 
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: hello
+            image: docker.m.daocloud.io/busybox:latest
+            imagePullPolicy: IfNotPresent
+            args: 
+            - /bin/sh
+            - -c 
+            - date; echo Hello from the Kubernetes CronJob!
+          restartPolicy: OnFailure

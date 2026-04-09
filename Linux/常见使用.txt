@@ -1,0 +1,11 @@
+1、usage使用
+usage() {
+    cat <<EOT
+$0 {start|stop|restart|status} [VM]
+EOT
+    exit 1
+}
+
+2、读取脚本的绝对路径及脚本名称
+path=$(cd `dirname $0`; pwd)
+name="${path##*/}"

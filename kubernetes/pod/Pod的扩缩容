@@ -1,0 +1,94 @@
+## 1、手动扩缩容机制
+
+### 使用示例
+
+#### nginx-deployment.yaml
+
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: docker.m.daocloud.io/nginx:1.28.3
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+```
+
+#### 运行结果
+
+```
+[root@kube-master study]# kubectl create -f nginx-deployment.yaml
+deployment.apps/nginx-deployment created
+[root@kube-master study]# kubectl get deploy
+NAME               READY   UP-TO-DATE   AVAILABLE   AGE
+nginx-deployment   3/3     3            3           29s
+[root@kube-master study]# kubectl get pod -l app=nginx
+NAME                              READY   STATUS    RESTARTS   AGE
+nginx-deployment-7c9bdb8f-8pwdk   1/1     Running   0          15s
+nginx-deployment-7c9bdb8f-mxghq   1/1     Running   0          15s
+nginx-deployment-7c9bdb8f-r6x5j   1/1     Running   0          15s
+[root@kube-master ~]# kubectl scale deployment nginx-deployment --replicas=6
+deployment.apps/nginx-deployment scaled
+[root@kube-master ~]# kubectl get deploy
+NAME               READY   UP-TO-DATE   AVAILABLE   AGE
+nginx-deployment   6/6     6            6           84s
+[root@kube-master ~]# kubectl get pod -l app=nginx
+NAME                              READY   STATUS    RESTARTS   AGE
+nginx-deployment-7c9bdb8f-8pwdk   1/1     Running   0          90s
+nginx-deployment-7c9bdb8f-9rmdf   1/1     Running   0          23s
+nginx-deployment-7c9bdb8f-mxghq   1/1     Running   0          90s
+nginx-deployment-7c9bdb8f-r6x5j   1/1     Running   0          90s
+nginx-deployment-7c9bdb8f-rx8fm   1/1     Running   0          23s
+nginx-deployment-7c9bdb8f-t4qhs   1/1     Running   0          23s
+[root@kube-master ~]# kubectl describe deploy/nginx-deployment
+Name:                   nginx-deployment
+Namespace:              default
+CreationTimestamp:      Sat, 28 Mar 2026 21:57:59 +0800
+Labels:                 <none>
+Annotations:            deployment.kubernetes.io/revision: 1
+Selector:               app=nginx
+Replicas:               6 desired | 6 updated | 6 total | 6 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:  app=nginx
+  Containers:
+   nginx:
+    Image:        docker.m.daocloud.io/nginx:1.28.3
+    Port:         80/TCP
+    Host Port:    0/TCP
+    Environment:  <none>
+    Mounts:       <none>
+  Volumes:        <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Progressing    True    NewReplicaSetAvailable
+  Available      True    MinimumReplicasAvailable
+OldReplicaSets:  <none>
+NewReplicaSet:   nginx-deployment-7c9bdb8f (6/6 replicas created)
+Events:
+  Type    Reason             Age   From                   Message
+  ----    ------             ----  ----                   -------
+  Normal  ScalingReplicaSet  2m8s  deployment-controller  Scaled up replica set nginx-deployment-7c9bdb8f to 3
+  Normal  ScalingReplicaSet  61s   deployment-controller  Scaled up replica set nginx-deployment-7c9bdb8f to 6 from 3
+
+
+```
+
+## 2、自动扩缩机制
+

@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm-appconfigfile
+data:
+  key-server.xml: |-
+    server.xml,server.xmlserver.xmlserver.xmlxxxxxxxxx
+  key-logconfig.conf: |-
+    log4j.properties,log4j.properties,log4j.properties,log4j.properties

@@ -1,0 +1,19 @@
+apiVersion: batch/v1 
+kind: Job
+metadata: 
+  name: job-item-$ITEM
+  labels:
+    app: "jobexample"
+spec:
+  template:
+    metadata:
+      name: jobexample
+      labels:
+        app: "jobexample"
+    spec:
+      containers:
+      - name: jobexample
+        image: docker.m.daocloud.io/busybox:latest
+        imagePullPolicy: IfNotPresent
+        command: ["sh", "-c", "echo Hello Kubernetes job-item-$ITEM && sleep 30"]
+      restartPolicy: Never

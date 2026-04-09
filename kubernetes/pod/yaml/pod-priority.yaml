@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod 
+metadata:
+  name: pod-priority
+  labels:
+    app: "nginx"
+    env: "test"
+spec:
+  priorityClassName: high-priority
+  containers:
+  - name: nginx
+    image: docker.m.daocloud.io/nginx:latest
+    imagePullPolicy: IfNotPresent
+    ports:
+    - containerPort: 80
+
+  

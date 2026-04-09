@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: cm-testapp
+spec:
+  containers:
+  - name: cm-testapp-tomcat
+    image: docker.m.daocloud.io/tomcat:latest
+    imagePullPolicy: IfNotPresent
+    ports:
+    - containerPort: 8080
+    volumeMounts:
+    - name: serverxml
+      mountPath: /configfiles 
+
+  volumes:
+  - name: serverxml
+    configMap:
+      name: cm-appconfigfile
+      
+  
