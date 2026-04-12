@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: minio
+  name: minio
+  namespace: minio
+spec:
+  containers:
+  - name: minio
+    image: minio/minio:latest
+    command:
+    - /bin/bash
+    - -c
+    args: 
+    - minio server /data --console-address :9001
+    env:
+    - name: MINIO_ROOT_USER
+      value: "admin"
+    - name: MINIO_ROOT_PASSWORD
+      value: xxdow@2026
+    volumeMounts:
+    - mountPath: /data
+      name:  minio-nfs
+  volumes:
+    - name:  minio-nfs
+      persistentVolumeClaim:
+        claimName: minio-nfs-pvc
+    
+      
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: minio
+  namespace: minio
+spec:
+  type: ClusterIP
+  selector:
+    app: minio
+  ports:
+    - name: minio-console
+      port: 9001
+      targetPort: 9001
+    - name: minio-api
+      port: 9000
+      targetPort: 9000

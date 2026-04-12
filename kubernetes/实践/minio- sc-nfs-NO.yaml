@@ -1,0 +1,72 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: minio-nfs-sc
+provisioner: kubernetes.io/no-provisioner # 静态供给必须使用这个 provisioner
+volumeBindingMode: WaitForFirstConsumer # 等待 Pod 调度后再绑定，避免拓扑问题
+reclaimPolicy: Retain # 生产环境建议 Retain，防止误删 PV 导致数据丢失
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: minio-nfs-pv-1
+spec:
+  capacity:
+    storage: 10Gi # 根据需求调整
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: minio-nfs-sc # 必须与上面的 SC 名称一致
+  nfs:
+    server: 172.23.171.172 # 你的 NFS 服务器 IP
+    path: /nfs/data/minio/pv1
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: minio-nfs-pv-2
+spec:
+  capacity:
+    storage: 10Gi # 根据需求调整
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: minio-nfs-sc # 必须与上面的 SC 名称一致
+  nfs:
+    server: 172.23.171.172 # 你的 NFS 服务器 IP
+    path: /nfs/data/minio/pv2
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: minio-nfs-pv-3
+spec:
+  capacity:
+    storage: 10Gi # 根据需求调整
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: minio-nfs-sc # 必须与上面的 SC 名称一致
+  nfs:
+    server: 172.23.171.172 # 你的 NFS 服务器 IP
+    path: /nfs/data/minio/pv3
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: minio-nfs-pv-4
+spec:
+  capacity:
+    storage: 10Gi # 根据需求调整
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: minio-nfs-sc # 必须与上面的 SC 名称一致
+  nfs:
+    server: 172.23.171.172 # 你的 NFS 服务器 IP
+    path: /nfs/data/minio/pv4

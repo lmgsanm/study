@@ -1,0 +1,45 @@
+#用于存储grafana数据
+
+# mkdir -p /data/grafana
+# chmod 777 /data/grafana
+# cat >>  /etc/exports << EOF
+# /data/grafana  *(rw,sync,no_root_squash,no_all_squash)
+# EOF
+# exportfs -rv
+# systemctl restart rpcbind
+# systemctl restart nfs-server
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: monitoring
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: grafana-data-pv
+spec:
+  capacity:
+    storage: 20Gi
+  accessModes:
+    - ReadWriteMany  
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: "" 
+  nfs:
+    server: 172.23.171.172
+    path: /data/grafana
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: prometheus-stack-grafana
+  namespace: monitoring
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 20Gi
+  volumeName: grafana-data-pv 

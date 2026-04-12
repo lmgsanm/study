@@ -1,0 +1,38 @@
+# 轻量配置，适合小集群
+prometheus:
+  prometheusSpec:
+    retention: 7d                # 数据保留7天
+    resources:
+      requests:
+        cpu: 200m
+        memory: 500Mi
+      limits:
+        cpu: 1000m
+        memory: 1Gi
+
+    # ======================
+    # 对接你的 MinIO 做远程存储（可选但强烈推荐）
+    # ======================
+    remoteWrite:
+    - url: "http://my-minio.minio.svc:9000/prometheus"
+      queueConfig:
+        capacity: 2500
+
+grafana:
+  enabled: true
+  adminPassword: admin123       # 你自己改密码
+  persistence:
+    enabled: true               # 持久化仪表盘
+    size: 5Gi
+
+# 宿主机监控
+nodeExporter:
+  enabled: true
+
+# 集群/Pod状态监控
+kubeStateMetrics:
+  enabled: true
+
+# 小集群关闭告警，节省资源
+alertmanager:
+  enabled: false

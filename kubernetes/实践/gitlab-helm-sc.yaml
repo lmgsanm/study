@@ -1,0 +1,114 @@
+##创建一个nfs-subdir-external-provisioner
+## helm install gitlab-nfs-provisioner -n gitlab nfs-subdir-external-provisioner/nfs-subdir-external-provisioner \
+#  --set nfs.server=172.23.171.172 \
+#  --set nfs.path=/data/gitlab \
+#  --set storageClass.name=gitlab-sc \
+#  --set storageClass.onDelete=delete 
+
+#配置Minio的StorageClass
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: gitlab-minio
+provisioner: cluster.local/gitlab-nfs-provisioner-nfs-subdir-external-provisioner
+parameters:
+  # 设置为"false"时删除PVC不会保留数据，"true"则保留数据
+  archiveOnDelete: "false"
+mountOptions:
+  # 指定NFS版本,这个需要根据NFS Server版本号设置
+  - nfsvers=4
+---
+# 创建PVC
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: gitlab-minio
+  namespace: gitlab
+spec:
+  storageClassName: gitlab-minio    #需要与上面创建的storageclass的名称一致
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+
+#配置gitaly的storageClass
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: repo-data-gitlab-gitaly-0
+provisioner: cluster.local/gitlab-nfs-provisioner-nfs-subdir-external-provisioner
+parameters:
+  # 设置为"false"时删除PVC不会保留数据，"true"则保留数据
+  archiveOnDelete: "false"
+mountOptions:
+  # 指定NFS版本,这个需要根据NFS Server版本号设置
+  - nfsvers=4
+---
+# 创建PVC
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: repo-data-gitlab-gitaly-0
+  namespace: gitlab
+spec:
+  storageClassName: repo-data-gitlab-gitaly-0    #需要与上面创建的storageclass的名称一致
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: redis-data-gitlab-redis-master-0
+provisioner: cluster.local/gitlab-nfs-provisioner-nfs-subdir-external-provisioner
+parameters:
+  # 设置为"false"时删除PVC不会保留数据，"true"则保留数据
+  archiveOnDelete: "false"
+mountOptions:
+  # 指定NFS版本,这个需要根据NFS Server版本号设置
+  - nfsvers=4
+---
+# 创建PVC
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: redis-data-gitlab-redis-master-0
+  namespace: gitlab
+spec:
+  storageClassName: redis-data-gitlab-redis-master-0    #需要与上面创建的storageclass的名称一致
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: gitlab-storage-postsql
+provisioner: cluster.local/gitlab-nfs-provisioner-nfs-subdir-external-provisioner
+parameters:
+  # 设置为"false"时删除PVC不会保留数据，"true"则保留数据
+  archiveOnDelete: "false"
+mountOptions:
+  # 指定NFS版本,这个需要根据NFS Server版本号设置
+  - nfsvers=4
+---
+# 创建PVC
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: gitlab-storage-pvc-postsql
+  namespace: gitlab
+spec:
+  storageClassName: gitlab-storage-postsql    #需要与上面创建的storageclass的名称一致
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 3Gi

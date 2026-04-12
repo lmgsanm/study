@@ -1,0 +1,25 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: nfs-storage-minio
+provisioner: cluster.local/nfs-subdir-external-provisioner
+parameters:
+  # 设置为"false"时删除PVC不会保留数据，"true"则保留数据
+  archiveOnDelete: "false"
+mountOptions:
+  # 指定NFS版本,这个需要根据NFS Server版本号设置
+  - nfsvers=4
+---
+# 创建PVC
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: nfs-storage-pvc-minio
+  namespace: minio
+spec:
+  storageClassName: nfs-storage-minio    #需要与上面创建的storageclass的名称一致
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
