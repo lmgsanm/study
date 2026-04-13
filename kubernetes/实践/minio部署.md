@@ -198,3 +198,30 @@ Warning  FailedScheduling  2m45s  default-scheduler  0/2 nodes are available: po
 
 ```
 
+# 20260413
+
+```
+kubectl create namespace minio
+helm repo add minio https://charts.min.io/
+helm repo update
+
+
+helm install minio minio/minio \
+  --namespace minio \
+  --set mode=standalone \
+  --set persistence.enabled=true \
+  --set persistence.storageClass=nfs-csi \
+  --set persistence.size=20Gi \
+  --set resources.requests.memory=1Gi \
+  --set resources.requests.cpu=500m \
+  --set service.type=NodePort \
+  --set rootUser=admin \
+  --set rootPassword=Admin@123456
+```
+
+```
+https://dl.min.io/client/mc/release/linux-amd64/mc
+chmod u+x mc
+
+```
+
