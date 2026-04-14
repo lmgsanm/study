@@ -1,8 +1,4 @@
-
-
 https://argo-cd.readthedocs.io/en/stable/
-
-
 
 ```
 kubectl create namespace argocd
@@ -23,8 +19,6 @@ data:
 kubectl apply -n argocd --server-side --force-conflicts -f install.yaml
 
 ```
-
-
 
 ```
 [root@kube-master argocd]# kubectl get cm -n argocd
@@ -76,12 +70,11 @@ argocd-server-metrics                     ClusterIP   10.105.7.129     <none>   
 
 argocd-ingress.yaml
 
-```
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: argocd-ingress
-  namespace: default
+  namespace: argocd
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/rewrite-target: /
@@ -105,10 +98,6 @@ spec:
                   number: 80
 
 ```
-
-
-
-```
 wget https://github.com/argoproj/argo-cd/releases/download/v3.3.6/argocd-linux-amd64
 mv argocd-linux-amd64 argocd
 chmod u+x argocd
@@ -128,14 +117,10 @@ argocd: v3.3.6+998fb59
 
 ```
 
-
-
 ```
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 
 ```
-
-
 
 ```
 cat  >> /etc/hosts << EOF
@@ -161,4 +146,3 @@ Password updated
 Context '10.104.2.242:80' updated
 
 ```
-

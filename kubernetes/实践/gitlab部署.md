@@ -1305,3 +1305,746 @@ speaker-x47r7                 1/1     Running   0          33s
 
 ```
 
+```
+[root@kube-node ~]# kubectl get svc -n gitlab gitlab-nginx-ingress-controller
+E0414 01:33:18.787889  895918 memcache.go:265] couldn't get current server API group list: Get "http://localhost:8080/api?timeout=32s": dial tcp [::1]:8080: connect: connection refused
+E0414 01:33:18.788168  895918 memcache.go:265] couldn't get current server API group list: Get "http://localhost:8080/api?timeout=32s": dial tcp [::1]:8080: connect: connection refused
+E0414 01:33:18.789615  895918 memcache.go:265] couldn't get current server API group list: Get "http://localhost:8080/api?timeout=32s": dial tcp [::1]:8080: connect: connection refused
+E0414 01:33:18.789897  895918 memcache.go:265] couldn't get current server API group list: Get "http://localhost:8080/api?timeout=32s": dial tcp [::1]:8080: connect: connection refused
+E0414 01:33:18.791197  895918 memcache.go:265] couldn't get current server API group list: Get "http://localhost:8080/api?timeout=32s": dial tcp [::1]:8080: connect: connection refused
+The connection to the server localhost:8080 was refused - did you specify the right host or port?
+
+
+[root@kube-node ~]# curl -vkI https://gitlab.example.com
+*   Trying 47.85.132.146:443...
+* Connected to gitlab.example.com (47.85.132.146) port 443 (#0)
+* ALPN, offering h2
+* ALPN, offering http/1.1
+*  CAfile: /etc/pki/tls/certs/ca-bundle.crt
+* TLSv1.0 (OUT), TLS header, Certificate Status (22):
+* TLSv1.3 (OUT), TLS handshake, Client hello (1):
+* (5454) (IN), , Unknown (72):
+* TLSv1.0 (OUT), TLS header, Unknown (21):
+* TLSv1.3 (OUT), TLS alert, record overflow (534):
+* error:0A0000C6:SSL routines::packet length too long
+* Closing connection 0
+curl: (35) error:0A0000C6:SSL routines::packet length too long
+
+
+[root@kube-master gitlab]# curl https://10.104.199.23
+curl: (60) SSL certificate problem: self-signed certificate
+More details here: https://curl.se/docs/sslcerts.html
+
+curl failed to verify the legitimacy of the server and therefore could not
+establish a secure connection to it. To learn more about this situation and
+how to fix it, please visit the web page mentioned above.
+
+```
+
+
+
+```
+helm install gitlab gitlab/gitlab -f values.yaml -n gitlab \
+  --set global.hosts.https=true \
+  --set global.ingress.configureCertmanager=true \
+  --set global.ingress.tls.enabled=true \
+  \
+   --set global.ingress.tls.secretName="" \
+   \
+     --set certmanager-issuer.email=lmgsanm@163.com \
+  --set certmanager-issuer.server=https://acme-v02.api.letsencrypt.org/directory 
+```
+
+# 20260414
+
+## gitlab
+
+```
+helm install gitlab gitlab/gitlab -f values.yaml -n gitlab \
+  --set global.hosts.https=true \
+  --set global.ingress.configureCertmanager=true \
+  --set certmanager-issuer.email=lmgsanm@163.com \
+  --set global.ingress.tls.enabled=true \
+  --set global.hosts.domain=example \
+  --set global.hosts.host=gitlab \
+  --set global.hosts.externalIP=47.85.132.146 \
+  --set nginx-ingress.controller.service.externalIPs={"47.85.132.146"} \
+  
+  [root@kube-master ~]# kubectl get certificates -n gitlab
+NAME             READY   SECRET           AGE
+gitlab-kas-tls   False   gitlab-kas-tls   5m52s
+[root@kube-master ~]# kubectl get certificaterequests -n gitlab
+NAME               APPROVED   DENIED   READY   ISSUER          REQUESTER                                         AGE
+gitlab-kas-tls-1   True                False   gitlab-issuer   system:serviceaccount:cert-manager:cert-manager   5m53s
+[root@kube-master ~]# kubectl get issuers -n gitlab
+NAME               READY   AGE
+gitlab-gw-issuer   True    18h
+gitlab-issuer      True    22h
+
+[root@kube-master ~]#  kubectl get issuers,certificaterequests,certificates -n gitlab
+NAME                                      READY   AGE
+issuer.cert-manager.io/gitlab-gw-issuer   True    18h
+issuer.cert-manager.io/gitlab-issuer      True    22h
+
+NAME                                                  APPROVED   DENIED   READY   ISSUER          REQUESTER                                         AGE
+certificaterequest.cert-manager.io/gitlab-kas-tls-1   True                False   gitlab-issuer   system:serviceaccount:cert-manager:cert-manager   9m16s
+
+NAME                                         READY   SECRET           AGE
+certificate.cert-manager.io/gitlab-kas-tls   False   gitlab-kas-tls   9m29s
+
+
+```
+
+
+
+```
+kubectl delete certificates --all -n gitlab
+kubectl delete secrets --all -n gitlab
+kubectl delete ingress --all -n gitlab
+
+kubectl create ns gitlab
+helm install gitlab gitlab/gitlab -f values.yaml -n gitlab \
+  --set certmanager.installCRDs=false \
+  --set global.ingress.configureCertmanager=false \
+  --set global.ingress.tls.enabled=false \
+  --set global.ingress.tls.autoRedirect=false \
+  --set global.hosts.domain=example \
+  --set global.hosts.host=gitlab \
+  --set global.hosts.externalIP=47.85.132.146 \
+  --set nginx-ingress.controller.service.externalIPs={"47.85.132.146"} 
+  
+```
+
+
+
+```
+[root@kube-master gitlab]# kubectl get pod -n gitlab
+NAME                                               READY   STATUS                  RESTARTS        AGE
+gitlab-certmanager-56f499845-5npzj                 1/1     Running                 0               30m
+gitlab-certmanager-cainjector-6d6c8c8cdb-8qmn5     1/1     Running                 0               30m
+gitlab-certmanager-webhook-75469dd45c-fntp4        1/1     Running                 0               30m
+gitlab-gitaly-0                                    1/1     Running                 0               30m
+gitlab-gitlab-exporter-6f7d4bfb8f-l7grz            1/1     Running                 0               30m
+gitlab-gitlab-runner-c699f655b-nqnn5               0/1     CrashLoopBackOff        7 (4m22s ago)   30m
+gitlab-gitlab-shell-865f5d9f89-8krv8               1/1     Running                 0               30m
+gitlab-gitlab-shell-865f5d9f89-pdzxm               1/1     Running                 0               30m
+gitlab-kas-6d9f687f5-5nh9r                         1/1     Running                 2 (30m ago)     30m
+gitlab-kas-6d9f687f5-m59xj                         1/1     Running                 3 (30m ago)     30m
+gitlab-migrations-2504fc3-dv5gj                    0/1     Completed               0               18h
+gitlab-migrations-531425c-p6ppq                    0/1     Completed               0               18h
+gitlab-migrations-b7265d9-n9v9p                    0/1     Completed               0               18h
+gitlab-migrations-e033039-m4hzh                    0/1     Completed               0               19h
+gitlab-minio-6577f858fb-rskcf                      1/1     Running                 0               30m
+gitlab-minio-create-buckets-2994294-khz9r          0/1     Completed               0               18h
+gitlab-minio-create-buckets-9726c45-nzxlc          0/1     Completed               0               19h
+gitlab-minio-create-buckets-ac990d5-hf87r          0/1     Completed               0               18h
+gitlab-minio-create-buckets-b507124-d6wkw          0/1     Completed               0               18h
+gitlab-minio-create-buckets-ffae31f-7jmnm          0/1     Completed               0               30m
+gitlab-nginx-ingress-controller-6d6fff8bdc-ccvjw   1/1     Running                 0               30m
+gitlab-nginx-ingress-controller-6d6fff8bdc-cv696   1/1     Running                 0               30m
+gitlab-postgresql-0                                2/2     Running                 0               30m
+gitlab-redis-master-0                              2/2     Running                 0               30m
+gitlab-registry-b5d9cd946-84qjk                    1/1     Running                 0               30m
+gitlab-registry-b5d9cd946-xtb6w                    1/1     Running                 0               30m
+gitlab-sidekiq-all-in-1-v2-5fbf6b7b6c-6hm2k        0/1     Init:CrashLoopBackOff   9 (4m8s ago)    30m
+gitlab-toolbox-647dfcb6c9-dsh7h                    1/1     Running                 0               30m
+gitlab-webservice-default-6dd4bfd6ff-66ffh         0/2     Init:CrashLoopBackOff   9 (3m48s ago)   30m
+gitlab-webservice-default-6dd4bfd6ff-fnsqh         0/2     Init:CrashLoopBackOff   9 (3m47s ago)   30m
+[root@kube-master gitlab]# kubeclt describe pod gitlab-webservice-default-6dd4bfd6ff-66ffh -n gitlab
+-bash: kubeclt: command not found
+[root@kube-master gitlab]# kubectl describe pod gitlab-webservice-default-6dd4bfd6ff-66ffh -n gitlab
+Name:             gitlab-webservice-default-6dd4bfd6ff-66ffh
+Namespace:        gitlab
+Priority:         0
+Service Account:  default
+Node:             kube-master/172.23.171.172
+Start Time:       Tue, 14 Apr 2026 19:22:46 +0800
+Labels:           app=webservice
+                  app.kubernetes.io/name=gitlab
+                  app.kubernetes.io/version=v18.10.3
+                  chart=webservice-9.10.3
+                  gitlab.com/webservice-name=default
+                  heritage=Helm
+                  pod-template-hash=6dd4bfd6ff
+                  release=gitlab
+Annotations:      checksum/config: 8da3a587b5746373fef7c58c0c10b19ae9dcd6f99e1d00d5e18d1ceca9b6a7ec
+                  cluster-autoscaler.kubernetes.io/safe-to-evict: true
+                  cni.projectcalico.org/containerID: 86f64a0b5403b268dd7ed84606cde042a9ec57d3711bc47f05e796d8b3f096ba
+                  cni.projectcalico.org/podIP: 192.168.221.248/32
+                  cni.projectcalico.org/podIPs: 192.168.221.248/32
+                  gitlab.com/prometheus_path: /metrics
+                  gitlab.com/prometheus_port: 8083
+                  gitlab.com/prometheus_scrape: true
+                  prometheus.io/path: /metrics
+                  prometheus.io/port: 8083
+                  prometheus.io/scrape: true
+Status:           Pending
+SeccompProfile:   RuntimeDefault
+IP:               192.168.221.248
+IPs:
+  IP:           192.168.221.248
+Controlled By:  ReplicaSet/gitlab-webservice-default-6dd4bfd6ff
+Init Containers:
+  certificates:
+    Container ID:   docker://ceb29b878aac2312345092875d622d796449c3aa7b65c0c76bf8f9bd49b813e4
+    Image:          registry.gitlab.com/gitlab-org/build/cng/certificates:v18.10.3
+    Image ID:       docker-pullable://registry.gitlab.com/gitlab-org/build/cng/certificates@sha256:86fddec7dfa622f3cdb4640e2c5be1d607b40f933eb0a2648fbf8e270b4fd717
+    Port:           <none>
+    Host Port:      <none>
+    State:          Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Tue, 14 Apr 2026 19:22:47 +0800
+      Finished:     Tue, 14 Apr 2026 19:22:49 +0800
+    Ready:          True
+    Restart Count:  0
+    Requests:
+      cpu:  50m
+    Environment:
+      TZ:  UTC
+    Mounts:
+      /etc/pki/ca-trust/extracted/pem from etc-pki-ca-trust-extracted-pem (rw)
+      /etc/ssl/certs from etc-ssl-certs (rw)
+  configure:
+    Container ID:  docker://2ef1794c3539007e00876fc05bb07ecc547372a8f1ade8b06c0c71ebb36f60ea
+    Image:         registry.gitlab.com/gitlab-org/build/cng/gitlab-base:v18.10.3
+    Image ID:      docker-pullable://registry.gitlab.com/gitlab-org/build/cng/gitlab-base@sha256:7e53c101c9323e3e6e68ca2a342abb6cb1f62e81a77965818e069867c4ac0390
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      sh
+    Args:
+      -c
+      sh -x /config-webservice/configure ; sh -x /config-workhorse/configure ; mkdir -p -m 3770 /tmp/gitlab
+    State:          Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Tue, 14 Apr 2026 19:22:50 +0800
+      Finished:     Tue, 14 Apr 2026 19:22:50 +0800
+    Ready:          True
+    Restart Count:  0
+    Requests:
+      cpu:  50m
+    Environment:
+      TZ:  UTC
+    Mounts:
+      /config-webservice from webservice-config (ro)
+      /config-workhorse from workhorse-config (ro)
+      /init-config from init-webservice-secrets (ro)
+      /init-secrets from webservice-secrets (rw)
+      /init-secrets-workhorse from workhorse-secrets (rw)
+      /tmp from shared-tmp (rw)
+  dependencies:
+    Container ID:  docker://1fc58197aa9f744e39d65553e922f64c13e24c6663f324f3cc3676030efd68de
+    Image:         registry.gitlab.com/gitlab-org/build/cng/gitlab-webservice-ce:v18.10.3
+    Image ID:      docker-pullable://registry.gitlab.com/gitlab-org/build/cng/gitlab-webservice-ce@sha256:aae9993f6746a71ae3f040a08aea7a3047236d188b662359249f1041f0bc18c0
+    Port:          <none>
+    Host Port:     <none>
+    Args:
+      /scripts/wait-for-deps
+    State:          Waiting
+      Reason:       CrashLoopBackOff
+    Last State:     Terminated
+      Reason:       Error
+      Exit Code:    1
+      Started:      Tue, 14 Apr 2026 19:49:20 +0800
+      Finished:     Tue, 14 Apr 2026 19:49:55 +0800
+    Ready:          False
+    Restart Count:  9
+    Requests:
+      cpu:  50m
+    Environment:
+      TZ:                                UTC
+      CONFIG_TEMPLATE_DIRECTORY:         /var/opt/gitlab/templates
+      CONFIG_DIRECTORY:                  /srv/gitlab/config
+      WORKHORSE_ARCHIVE_CACHE_DISABLED:  1
+      ENABLE_BOOTSNAP:                   1
+    Mounts:
+      /etc/gitlab from webservice-secrets (ro)
+      /etc/pki/ca-trust/extracted/pem from etc-pki-ca-trust-extracted-pem (ro)
+      /etc/ssl/certs/ from etc-ssl-certs (ro)
+      /srv/gitlab/config/secrets.yml from webservice-secrets (ro,path="rails-secrets/secrets.yml")
+      /var/opt/gitlab/templates from webservice-config (rw)
+Containers:
+  webservice:
+    Container ID:
+    Image:          registry.gitlab.com/gitlab-org/build/cng/gitlab-webservice-ce:v18.10.3
+    Image ID:
+    Ports:          8080/TCP, 8083/TCP
+    Host Ports:     0/TCP, 0/TCP
+    State:          Waiting
+      Reason:       PodInitializing
+    Ready:          False
+    Restart Count:  0
+    Requests:
+      cpu:      300m
+      memory:   2500M
+    Liveness:   http-get http://:8080/-/liveness delay=20s timeout=30s period=60s #success=1 #failure=3
+    Readiness:  http-get http://:8080/-/readiness delay=0s timeout=2s period=5s #success=1 #failure=2
+    Environment:
+      TZ:                                UTC
+      GITLAB_WEBSERVER:                  puma
+      TMPDIR:                            /tmp/gitlab
+      CONFIG_TEMPLATE_DIRECTORY:         /var/opt/gitlab/templates
+      CONFIG_DIRECTORY:                  /srv/gitlab/config
+      prometheus_multiproc_dir:          /metrics
+      ENABLE_BOOTSNAP:                   1
+      WORKER_PROCESSES:                  2
+      WORKER_TIMEOUT:                    60
+      INTERNAL_PORT:                     8080
+      PUMA_THREADS_MIN:                  4
+      PUMA_THREADS_MAX:                  4
+      PUMA_WORKER_MAX_MEMORY:
+      DISABLE_PUMA_WORKER_KILLER:        true
+      BIND_IP6:                          false
+      PUMA_CONTROL_PORT:                 9293
+      SHUTDOWN_BLACKOUT_SECONDS:         10
+      WORKHORSE_ARCHIVE_CACHE_DISABLED:  true
+    Mounts:
+      /etc/gitlab from webservice-secrets (ro)
+      /etc/krb5.conf from webservice-config (rw,path="krb5.conf")
+      /etc/pki/ca-trust/extracted/pem from etc-pki-ca-trust-extracted-pem (ro)
+      /etc/ssl/certs/ from etc-ssl-certs (ro)
+      /metrics from webservice-metrics (rw)
+      /srv/gitlab/INSTALLATION_TYPE from webservice-config (rw,path="installation_type")
+      /srv/gitlab/config/initializers/smtp_settings.rb from webservice-config (rw,path="smtp_settings.rb")
+      /srv/gitlab/config/secrets.yml from webservice-secrets (rw,path="rails-secrets/secrets.yml")
+      /srv/gitlab/public/uploads/tmp from shared-upload-directory (rw)
+      /tmp from shared-tmp (rw)
+      /var/opt/gitlab/templates from webservice-config (rw)
+  gitlab-workhorse:
+    Container ID:
+    Image:          registry.gitlab.com/gitlab-org/build/cng/gitlab-workhorse-ce:v18.10.3
+    Image ID:
+    Port:           8181/TCP
+    Host Port:      0/TCP
+    State:          Waiting
+      Reason:       PodInitializing
+    Ready:          False
+    Restart Count:  0
+    Requests:
+      cpu:      100m
+      memory:   100M
+    Liveness:   exec [/scripts/healthcheck] delay=20s timeout=30s period=60s #success=1 #failure=3
+    Readiness:  exec [/scripts/healthcheck] delay=0s timeout=2s period=10s #success=1 #failure=3
+    Environment:
+      TZ:                             UTC
+      GODEBUG:                        tlsmlkem=0,tlskyber=0
+      TMPDIR:                         /tmp/gitlab
+      GITLAB_WORKHORSE_AUTH_BACKEND:  http://localhost:8080
+      GITLAB_WORKHORSE_EXTRA_ARGS:
+      GITLAB_WORKHORSE_LISTEN_PORT:   8181
+      GITLAB_WORKHORSE_LOG_FORMAT:    json
+      CONFIG_TEMPLATE_DIRECTORY:      /var/opt/gitlab/templates
+      CONFIG_DIRECTORY:               /srv/gitlab/config
+      SHUTDOWN_BLACKOUT_SECONDS:      10
+      PUMA_CONTROL_PORT:              9293
+    Mounts:
+      /etc/gitlab from workhorse-secrets (ro)
+      /etc/pki/ca-trust/extracted/pem from etc-pki-ca-trust-extracted-pem (ro)
+      /etc/ssl/certs/ from etc-ssl-certs (ro)
+      /srv/gitlab/public/uploads/tmp from shared-upload-directory (rw)
+      /tmp from shared-tmp (rw)
+      /var/opt/gitlab/templates from workhorse-config (rw)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True
+  Initialized                 False
+  Ready                       False
+  ContainersReady             False
+  PodScheduled                True
+Volumes:
+  shared-tmp:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:
+    SizeLimit:  <unset>
+  webservice-metrics:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     Memory
+    SizeLimit:  <unset>
+  webservice-config:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      gitlab-webservice
+    Optional:  false
+  workhorse-config:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      gitlab-workhorse-default
+    Optional:  false
+  init-webservice-secrets:
+    Type:                Projected (a volume that contains injected data from multiple sources)
+    SecretName:          gitlab-rails-secret
+    SecretOptionalName:  <nil>
+    SecretName:          gitlab-gitlab-shell-secret
+    SecretOptionalName:  <nil>
+    SecretName:          gitlab-gitaly-secret
+    SecretOptionalName:  <nil>
+    SecretName:          gitlab-redis-secret
+    SecretOptionalName:  <nil>
+    SecretName:          gitlab-postgresql-password
+    SecretOptionalName:  <nil>
+    SecretName:          gitlab-postgresql-password
+    SecretOptionalName:  <nil>
+    SecretName:          gitlab-registry-secret
+    SecretOptionalName:  <nil>
+    SecretName:          gitlab-registry-notification
+    SecretOptionalName:  <nil>
+    SecretName:          gitlab-gitlab-workhorse-secret
+    SecretOptionalName:  <nil>
+    SecretName:          gitlab-gitlab-kas-secret
+    SecretOptionalName:  <nil>
+    SecretName:          gitlab-minio-secret
+    SecretOptionalName:  <nil>
+  webservice-secrets:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     Memory
+    SizeLimit:  <unset>
+  workhorse-secrets:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     Memory
+    SizeLimit:  <unset>
+  shared-upload-directory:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:
+    SizeLimit:  <unset>
+  etc-ssl-certs:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     Memory
+    SizeLimit:  <unset>
+  etc-pki-ca-trust-extracted-pem:
+    Type:        EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:      Memory
+    SizeLimit:   <unset>
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason     Age                  From               Message
+  ----     ------     ----                 ----               -------
+  Normal   Scheduled  31m                  default-scheduler  Successfully assigned gitlab/gitlab-webservice-default-6dd4bfd6ff-66ffh to kube-master
+  Normal   Pulled     31m                  kubelet            Container image "registry.gitlab.com/gitlab-org/build/cng/certificates:v18.10.3" already present on machine
+  Normal   Created    31m                  kubelet            Created container: certificates
+  Normal   Started    31m                  kubelet            Started container certificates
+  Normal   Pulled     31m                  kubelet            Container image "registry.gitlab.com/gitlab-org/build/cng/gitlab-base:v18.10.3" already present on machine
+  Normal   Created    31m                  kubelet            Created container: configure
+  Normal   Started    31m                  kubelet            Started container configure
+  Normal   Pulled     28m (x4 over 31m)    kubelet            Container image "registry.gitlab.com/gitlab-org/build/cng/gitlab-webservice-ce:v18.10.3" already present on machine
+  Normal   Created    28m (x4 over 31m)    kubelet            Created container: dependencies
+  Normal   Started    28m (x4 over 31m)    kubelet            Started container dependencies
+  Warning  BackOff    79s (x112 over 30m)  kubelet            Back-off restarting failed container dependencies in pod gitlab-webservice-default-6dd4bfd6ff-66ffh_gitlab(2e836428-b10e-479a-a010-bf6a22f11704)
+[root@kube-master gitlab]# kubectl logs pod gitlab-webservice-default-6dd4bfd6ff-66ffh -n gitlab
+Error from server (NotFound): pods "pod" not found
+[root@kube-master gitlab]# kubectl logs gitlab-webservice-default-6dd4bfd6ff-66ffh -n gitlab
+Defaulted container "webservice" out of: webservice, gitlab-workhorse, certificates (init), configure (init), dependencies (init)
+Error from server (BadRequest): container "webservice" in pod "gitlab-webservice-default-6dd4bfd6ff-66ffh" is waiting to start: PodInitializing
+[root@kube-master gitlab]# free -m
+               total        used        free      shared  buff/cache   available
+Mem:            7458        2982        2260          30        2575        4476
+Swap:              0           0           0
+[root@kube-master gitlab]# kubectl logs gitlab-webservice-default-6dd4bfd6ff-66ffh -c dependencies -n gitlab
+Begin parsing .erb templates from /var/opt/gitlab/templates
+Writing /srv/gitlab/config/cable.yml
+Writing /srv/gitlab/config/database.yml
+Writing /srv/gitlab/config/gitlab.yml
+Writing /srv/gitlab/config/redis.action_cable.yml
+Writing /srv/gitlab/config/resque.yml
+Writing /srv/gitlab/config/session_store.yml
+Begin parsing .tpl templates from /var/opt/gitlab/templates
+Copying other config files found in /var/opt/gitlab/templates to /srv/gitlab/config
+Copying smtp_settings.rb into /srv/gitlab/config
+[TopologyService] INFO: Topology service check is disabled (SKIP_TOPOLOGY_SERVICE_CHECK != false). Skipping.
+Checking: resque.yml, cable.yml
+[ClickHouse] INFO: ClickHouse is not configured. Skipping migration checks.
++ SUCCESS connecting to 'redis://gitlab-redis-master.gitlab.svc:6379' from cable.yml, through gitlab-redis-master.gitlab.svc
++ SUCCESS connecting to 'redis://gitlab-redis-master.gitlab.svc:6379' from resque.yml, through gitlab-redis-master.gitlab.svc
+Checking: main
+Error checking main: There is an issue connecting to your database with your username/password, username: gitlab.
+
+Please check your database configuration to ensure the username/password are valid.
+Checking: main
+Error checking main: There is an issue connecting to your database with your username/password, username: gitlab.
+
+Please check your database configuration to ensure the username/password are valid.
+Checking: main
+Error checking main: There is an issue connecting to your database with your username/password, username: gitlab.
+
+Please check your database configuration to ensure the username/password are valid.
+Checking: main
+Error checking main: There is an issue connecting to your database with your username/password, username: gitlab.
+
+Please check your database configuration to ensure the username/password are valid.
+Checking: main
+Error checking main: There is an issue connecting to your database with your username/password, username: gitlab.
+
+Please check your database configuration to ensure the username/password are valid.
+Checking: main
+Error checking main: There is an issue connecting to your database with your username/password, username: gitlab.
+
+Please check your database configuration to ensure the username/password are valid.
+Checking: main
+Error checking main: There is an issue connecting to your database with your username/password, username: gitlab.
+
+Please check your database configuration to ensure the username/password are valid.
+Checking: main
+Error checking main: There is an issue connecting to your database with your username/password, username: gitlab.
+
+Please check your database configuration to ensure the username/password are valid.
+Checking: main
+Error checking main: There is an issue connecting to your database with your username/password, username: gitlab.
+
+Please check your database configuration to ensure the username/password are valid.
+Checking: main
+Error checking main: There is an issue connecting to your database with your username/password, username: gitlab.
+
+Please check your database configuration to ensure the username/password are valid.
+Checking: main
+Error checking main: There is an issue connecting to your database with your username/password, username: gitlab.
+
+Please check your database configuration to ensure the username/password are valid.
+Checking: main
+Error checking main: There is an issue connecting to your database with your username/password, username: gitlab.
+
+Please check your database configuration to ensure the username/password are valid.
+Checking: main
+Error checking main: There is an issue connecting to your database with your username/password, username: gitlab.
+
+Please check your database configuration to ensure the username/password are valid.
+Checking: main
+Error checking main: There is an issue connecting to your database with your username/password, username: gitlab.
+
+Please check your database configuration to ensure the username/password are valid.
+Checking: main
+Error checking main: There is an issue connecting to your database with your username/password, username: gitlab.
+
+Please check your database configuration to ensure the username/password are valid.
+Checking: main
+Error checking main: There is an issue connecting to your database with your username/password, username: gitlab.
+
+Please check your database configuration to ensure the username/password are valid.
+Checking: main
+Error checking main: There is an issue connecting to your database with your username/password, username: gitlab.
+
+Please check your database configuration to ensure the username/password are valid.
+Checking: main
+Error checking main: There is an issue connecting to your database with your username/password, username: gitlab.
+
+Please check your database configuration to ensure the username/password are valid.
+Checking: main
+Error checking main: There is an issue connecting to your database with your username/password, username: gitlab.
+
+Please check your database configuration to ensure the username/password are valid.
+Checking: main
+Error checking main: There is an issue connecting to your database with your username/password, username: gitlab.
+
+Please check your database configuration to ensure the username/password are valid.
+Checking: main
+Error checking main: There is an issue connecting to your database with your username/password, username: gitlab.
+
+Please check your database configuration to ensure the username/password are valid.
+Checking: main
+Error checking main: There is an issue connecting to your database with your username/password, username: gitlab.
+
+Please check your database configuration to ensure the username/password are valid.
+Checking: main
+Error checking main: There is an issue connecting to your database with your username/password, username: gitlab.
+
+Please check your database configuration to ensure the username/password are valid.
+Checking: main
+Error checking main: There is an issue connecting to your database with your username/password, username: gitlab.
+
+Please check your database configuration to ensure the username/password are valid.
+Checking: main
+Error checking main: There is an issue connecting to your database with your username/password, username: gitlab.
+
+Please check your database configuration to ensure the username/password are valid.
+Checking: main
+Error checking main: There is an issue connecting to your database with your username/password, username: gitlab.
+
+Please check your database configuration to ensure the username/password are valid.
+Checking: main
+Error checking main: There is an issue connecting to your database with your username/password, username: gitlab.
+
+Please check your database configuration to ensure the username/password are valid.
+Checking: main
+Error checking main: There is an issue connecting to your database with your username/password, username: gitlab.
+
+Please check your database configuration to ensure the username/password are valid.
+Checking: main
+Error checking main: There is an issue connecting to your database with your username/password, username: gitlab.
+
+Please check your database configuration to ensure the username/password are valid.
+WARNING: Not all services were operational, with data migrations completed.
+If this container continues to fail, please see: https://docs.gitlab.com/charts/troubleshooting/index.html#application-containers-constantly-initializing
+
+```
+
+```
+helm uninstall gitlab -n gitlab
+kubectl get pod -n gitlab
+
+kubectl delete pvc --all -n gitlab
+kubectl delete secrets --all -n gitlab
+kubectl delete certificates --all -n gitlab
+kubectl delete namespace gitlab
+
+helm install gitlab gitlab/gitlab -f values.yaml -n gitlab --create-namespace
+
+[root@kube-master ~]# kubectl get ingress -n gitlab
+NAME                        CLASS          HOSTS                  ADDRESS   PORTS   AGE
+gitlab-kas                  gitlab-nginx   kas.example.com                  80      5m3s
+gitlab-minio                gitlab-nginx   minio.example.com                80      5m3s
+gitlab-registry             gitlab-nginx   registry.example.com             80      5m3s
+gitlab-webservice-default   gitlab-nginx   gitlab.example.com               80      5m3s
+[root@kube-master ~]# kubectl get secret gitlab-gitlab-initial-root-password -n gitlab -o jsonpath="{.data.password}" | base64 --decode; echo
+RQHwwBuHx5iRfFKg2xMmHo8rY8Z34GjLxax96im2TlTXuuSHWhDikX01n84Wohz9
+
+kubectl get secret gitlab-minio-secret -n gitlab -o jsonpath="{.data.accesskey}" | base64 -d
+kubectl get secret gitlab-minio-secret -n gitlab -o jsonpath="{.data.secretkey}" | base64 -d
+
+
+```
+
+## gitlab-runner
+
+```
+[root@kube-master runner]# helm search repo gitlab-runner
+NAME                    CHART VERSION   APP VERSION     DESCRIPTION
+gitlab/gitlab-runner    0.87.1          18.10.1         GitLab Runner
+[root@kube-master runner]# helm pull gitlab/gitlab-runner --untar
+[root@kube-master runner]# ls
+gitlab-runner
+[root@kube-master runner]# cd gitlab-runner/
+[root@kube-master gitlab-runner]# ls
+CHANGELOG.md  Chart.yaml  CONTRIBUTING.md  DEVELOPMENT.md  LICENSE  Makefile  NOTICE  README.md  templates  values.yaml
+
+helm install runner-k8s gitlab/gitlab-runner -f values.yaml -n gitlab-runner --create-namespace
+
+```
+
+## ingress
+
+```
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.provider: nginx
+    meta.helm.sh/release-name: gitlab
+    meta.helm.sh/release-namespace: gitlab
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    nginx.ingress.kubernetes.io/proxy-buffering: "off"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "900"
+    nginx.ingress.kubernetes.io/proxy-request-buffering: "off"
+  creationTimestamp: "2026-04-14T12:30:23Z"
+  generation: 1
+  labels:
+    app: minio
+    app.kubernetes.io/managed-by: Helm
+    chart: minio-0.4.3
+    heritage: Helm
+    release: gitlab
+  name: gitlab-minio
+  namespace: gitlab
+  resourceVersion: "235723"
+  uid: 2db025fa-1c8f-47eb-a2df-0e1a82ff7f87
+spec:
+  ingressClassName: gitlab-nginx
+  rules:
+  - host: minio.example.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: gitlab-minio-svc
+            port:
+              number: 9000
+        path: /
+        pathType: Prefix
+status:
+  loadBalancer: {}
+
+```
+
+
+
+```
+[root@kube-master ~]# cat ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gitlab
+  namespace: gitlab
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "60"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "60"
+
+spec:
+  rules:
+    - host: gitlab.example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: gitlab-webservice-default
+                port:
+                  number: 8080
+    - host: minio.example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: gitlab-minio-svc
+                port:
+                  number: 9000
+    - host: registry.example.com
+      http:
+        paths:
+        - backend:
+            service:
+              name: gitlab-registry
+              port:
+                number: 5000
+          path: /
+          pathType: Prefix
+
+
+
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: argocdingress
+  namespace: argocd
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "60"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "60"
+
+spec:
+  ingressClassName: nginx
+
+  rules:
+    - host: argocd.example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: argocd-server
+                port:
+                  number: 80
+
+
+```
+
+
+
