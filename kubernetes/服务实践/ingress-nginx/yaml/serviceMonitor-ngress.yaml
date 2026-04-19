@@ -1,0 +1,23 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: ingress-nginx-controller-metrics
+  namespace: monitoring  # Prometheus 所在命名空间
+  labels:
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/component: controller
+    app.kubernetes.io/instance: ingress-nginx
+    app.kubernetes.io/part-of: ingress-nginx
+    release: prometheus-stack  # 匹配 Prometheus 的 release 标签（需修改）
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: ingress-nginx  # 匹配 Ingress-Nginx Service 标签
+  namespaceSelector:
+    matchNames:
+      - ingress-nginx  # Ingress-Nginx 所在命名空间
+  endpoints:
+  - port: metrics  # 匹配 Ingress-Nginx Service 的 metrics 端口名
+    path: /metrics
+    interval: 15s
+    scrapeTimeout: 10s

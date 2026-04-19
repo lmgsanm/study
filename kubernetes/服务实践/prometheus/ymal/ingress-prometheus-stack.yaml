@@ -1,10 +1,9 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: gitlab-ingress
-  namespace: gitlab
+  name: monitoring-ingress
+  namespace: monitoring
   annotations:
-    kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
     nginx.ingress.kubernetes.io/proxy-read-timeout: "60"
@@ -13,33 +12,33 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: gitlab.example.com
+    - host: prometheus.example.com
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: gitlab-webservice-default
+                name: prometheus-stack-kube-prom-prometheus 
                 port:
-                  number: 8080
-    - host: minio.example.com
+                  number:  9090
+    - host: alertmanager.example.com
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: gitlab-minio-svc
+                name: prometheus-stack-kube-prom-alertmanage
                 port:
-                  number: 9000
-    - host: registry.example.com
+                  number: 9093
+    - host: grafana.example.com
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: gitlab-registry
+                name: prometheus-stack-grafana
                 port:
-                  number: 5000
+                  number: 80
