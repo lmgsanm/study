@@ -1,0 +1,64 @@
+# 禁用所有HTTPS/证书相关配置（纯HTTP访问）
+global:
+  hosts:
+    domain: example.com
+    gitlab:  # 完整域名：gitlab.example.com
+      name: gitlab
+      tls:
+        enabled: false
+  https: false  # 强制关闭HTTPS
+  ingress:
+    configureCertmanager: false  # 禁用cert-manager证书
+    tls:
+      enabled: false  # 关闭Ingress TLS
+  # 复用你已有的Ingress-Nginx
+  ingressClass: "nginx"  # 对应你的ingress-nginx 1.15.1的ingressClass
+
+# 使用存量StorageClass：nfs-csi
+postgresql:
+  primary:
+    persistence:
+      enabled: true
+      storageClass: "nfs-csi"
+redis:
+  master:
+    persistence:
+      enabled: true
+      storageClass: "nfs-csi"
+minio:
+  persistence:
+    enabled: true
+    storageClass: "nfs-csi"
+
+# 禁用GitLab自带的Ingress-Nginx（使用你已有的）
+nginx-ingress: &nginx-ingress
+  enabled: false
+
+
+# 禁用GitLab自带的Cert-Manager
+certmanager:
+  installCRDs: false
+
+# 关闭任务日志的PVC（可选，避免多余存储）
+gitlab-task-runner:
+  persistence:
+    enabled: false
+
+# 关闭HTTPS重定向（关键！确保仅HTTP访问）
+gitlab:
+  gitaly:
+    persistence:
+      enabled: true
+      storageClass: "nfs-csi"
+  webservice:
+    ingress:
+      annotations:
+        nginx.ingress.kubernetes.io/ssl-redirect: "false"
+        nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+  sidekiq:
+    enabled: true
+prometheus:
+  install: false
+
+certmanager-issuer:
+  email: lmgsanm@163.com
