@@ -4,11 +4,11 @@
 
 ## 一. 创建CA证书
 
-### 1. ca配置文件`ca-config.json`
+### 1. ca配置文件 `ca-config.json`
 
 > 主要作用就是，不同组件证书的形式，有效期是不一样的，因此，在ca配置中心，应该有一个配置文件，来具体的配置
 
-```
+```yaml
 {
     "signing": {
         "default": {
@@ -36,11 +36,11 @@
 - “server auth”：表示client可以用该 CA 对server提供的证书进行验证；
 - “client auth”：表示server可以用该 CA 对client提供的证书进行验证；
 
-### 2. ca证书签名请求`ca-csr.json`
+### 2. ca证书签名请求 `ca-csr.json`
 
 > 就是申请证书的人，你得把你的基本信息告诉证书颁发中心吧，证书颁发中心，根据你填写的基本信息，来生成你的证书。
 
-```
+```yaml
 {
     "CN": "etcd",
     "key": {
@@ -72,7 +72,7 @@
 cfssl gencert -initca ca-csr.json | cfssljson -bare ca
 ```
 
-> 生成`ca.csr`,`ca-key.pem`,`ca.pem`
+> 生成 `ca.csr`,`ca-key.pem`,`ca.pem`
 
 ## 二. 颁发证书
 
@@ -118,4 +118,5 @@ cfssl gencert -initca ca-csr.json | cfssljson -bare ca
 cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json -profile=etcd etcd-csr.json | cfssljson -bare etcd
 ```
 
-> > 生成`ca.csr`,`ca-key.pem`,`ca.pem`
+>> 生成 `ca.csr`,`ca-key.pem`,`ca.pem`
+>>
